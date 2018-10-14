@@ -16,6 +16,7 @@ set (SOURCES
     ${SOURCES_DIR}/ui/widgets/openfilebox.cpp
     ${SOURCES_DIR}/ui/widgets/inputbox.cpp
     ${SOURCES_DIR}/ui/widgets/outputbox.cpp
+    ${SOURCES_DIR}/soutbuilder.cpp
     )
 
 set (HEADERS
@@ -23,6 +24,7 @@ set (HEADERS
     ${HEADERS_DIR}/ui/widgets/openfilebox.hpp
     ${HEADERS_DIR}/ui/widgets/inputbox.hpp
     ${HEADERS_DIR}/ui/widgets/outputbox.hpp
+    ${HEADERS_DIR}/soutbuilder.hpp
     )
 
 # App
