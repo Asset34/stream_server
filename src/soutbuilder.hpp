@@ -7,6 +7,8 @@ class SoutBuilder
 {
 public:
     SoutBuilder();
+    SoutBuilder(const SoutBuilder &other) = delete;
+    SoutBuilder &operator=(const SoutBuilder &other) = delete;
 
     void setIp(const QString &ip);
     void setPort(const QString &port);
