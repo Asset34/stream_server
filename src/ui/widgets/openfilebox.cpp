@@ -50,7 +50,7 @@ QString OpenFileBox::getName() const
 
 void OpenFileBox::setName(const QString &name)
 {
-    m_nameLabel->setText(name);
+    m_nameLabel->setText(name + ":");
 }
 
 const QString &OpenFileBox::getStartDir() const
