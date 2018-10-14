@@ -13,6 +13,7 @@ set(CMAKE_AUTOMOC ON)
 set (SOURCES
     ${SOURCES_DIR}/main.cpp
     ${SOURCES_DIR}/ui/windows/mainwindow.cpp
+    ${SOURCES_DIR}/ui/panels/openmediapanel.cpp
     ${SOURCES_DIR}/ui/widgets/openfilebox.cpp
     ${SOURCES_DIR}/ui/widgets/inputbox.cpp
     ${SOURCES_DIR}/ui/widgets/outputbox.cpp
@@ -22,6 +23,7 @@ set (SOURCES
 
 set (HEADERS
     ${HEADERS_DIR}/ui/windows/mainwindow.hpp
+    ${HEADERS_DIR}/ui/panels/openmediapanel.hpp
     ${HEADERS_DIR}/ui/widgets/openfilebox.hpp
     ${HEADERS_DIR}/ui/widgets/inputbox.hpp
     ${HEADERS_DIR}/ui/widgets/outputbox.hpp
