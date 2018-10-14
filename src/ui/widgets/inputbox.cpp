@@ -17,17 +17,17 @@ InputBox::InputBox(const QString &name,
     /* Text edit */
     m_lineEdit = new QLineEdit(text);
 
-    /* Configurate layout */
+    /* Layout */
     m_layout = new QHBoxLayout;
     m_layout->setMargin(0);
     m_layout->addWidget(m_nameLabel);
     m_layout->addWidget(m_lineEdit);
 
-    /* Configurate widget */
+    /* Widget */
     setLayout(m_layout);
     setFixedHeight(25);
 
-    /* Set connections */
+    /* Connections */
     connect(m_lineEdit, &QLineEdit::textChanged, this, &InputBox::textChanged);
 }
 
