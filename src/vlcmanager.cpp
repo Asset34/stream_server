@@ -17,7 +17,7 @@ VlcManager::VlcManager(QObject *parent)
          << "--skip-frames"
          << "--no-keyboard-events"
          << "--no-mouse-events"
-         << "--mo-loop";
+         << "--no-loop";
 
     m_instance = new VlcInstance(args);
     m_mediaPlayer = new VlcMediaPlayer(m_instance);
