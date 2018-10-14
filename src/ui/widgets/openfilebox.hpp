@@ -6,7 +6,7 @@
 class QHBoxLayout;
 class QString;
 class QLabel;
-class QTextEdit;
+class QLineEdit;
 class QPushButton;
 class QFileDialog;
 
@@ -34,7 +34,7 @@ public:
 private:
     QHBoxLayout *m_layout;
     QLabel *m_nameLabel;
-    QTextEdit *m_pathTextEdit;
+    QLineEdit *m_pathLineEdit;
     QPushButton *m_fileDialogButton;
 
     QString m_filter;

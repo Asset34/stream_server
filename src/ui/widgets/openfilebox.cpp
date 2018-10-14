@@ -3,7 +3,7 @@
 #include <QHBoxLayout>
 #include <QString>
 #include <QLabel>
-#include <QTextEdit>
+#include <QLineEdit>
 #include <QPushButton>
 #include <QFileDialog>
 
@@ -19,10 +19,8 @@ OpenFileBox::OpenFileBox(const QString &name,
     m_nameLabel = new QLabel(name + ":");
 
     /* Path text edit */
-    m_pathTextEdit = new QTextEdit;
-    m_pathTextEdit->setFixedHeight(25);
-    m_pathTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    m_pathTextEdit->setLineWrapMode(QTextEdit::NoWrap);
+    m_pathLineEdit = new QLineEdit;
+    m_pathLineEdit->setFixedHeight(25);
 
     /* File button */
     m_fileDialogButton = new QPushButton("...");
@@ -33,7 +31,7 @@ OpenFileBox::OpenFileBox(const QString &name,
     m_layout = new QHBoxLayout;
     m_layout->setMargin(0);
     m_layout->addWidget(m_nameLabel);
-    m_layout->addWidget(m_pathTextEdit);
+    m_layout->addWidget(m_pathLineEdit);
     m_layout->addWidget(m_fileDialogButton);
 
     /* Widget */
@@ -77,7 +75,7 @@ void OpenFileBox::setFilter(const QString &filter)
 
 QString OpenFileBox::getPath() const
 {
-    return m_pathTextEdit->toPlainText();
+    return m_pathLineEdit->text();
 }
 
 void OpenFileBox::slotSelectFile()
@@ -89,7 +87,7 @@ void OpenFileBox::slotSelectFile()
                 m_filter
                 );
 
-    m_pathTextEdit->setText(path);
+    m_pathLineEdit->setText(path);
 
     emit selected(path);
 }
