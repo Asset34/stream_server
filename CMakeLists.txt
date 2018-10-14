@@ -6,6 +6,10 @@ set(SOURCES_DIR src)
 set(HEADERS_DIR src)
 set(LIBS_DIR libs)
 
+# Qt flags
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+
 set (SOURCES
     ${SOURCES_DIR}/main.cpp
     ${SOURCES_DIR}/ui/windows/mainwindow.cpp
@@ -24,7 +28,6 @@ include_directories(${HEADERS_DIR})
 
 # Qt
 find_package(Qt5Widgets REQUIRED)
-set(CMAKE_AUTOMOC ON)
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
 
 # Vlc-qt
