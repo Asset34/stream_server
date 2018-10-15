@@ -5,7 +5,6 @@
 
 #include <vlcmanager.hpp>
 
-class QGroupBox;
 class QHBoxLayout;
 class QPushButton;
 class OpenFileBox;
@@ -20,9 +19,7 @@ public:
     virtual ~OpenMediaPanel();
 
 private:
-    QHBoxLayout *m_mainLayout;
-    QGroupBox *m_groupBox;
-    QHBoxLayout *m_groupBoxLayout;
+    QHBoxLayout *m_layout;
     OpenFileBox *m_openFileBox;
     QPushButton *m_openButton;
 

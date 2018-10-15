@@ -10,31 +10,22 @@ OpenMediaPanel::OpenMediaPanel(VlcManager *vlcManager, QWidget *parent)
       m_vlcManager(vlcManager)
 {
     /* Open file box */
-    m_openFileBox = new OpenFileBox("Path");
+    m_openFileBox = new OpenFileBox("Path",
+                                    "C:\\Users\\User\\Desktop\\Study\\6th_Semester\\Computer_Networks\\CW\\Video_samples");
 
     /* Open button */
     m_openButton = new QPushButton("Open");
     m_openButton->setFixedWidth(50);
     m_openButton->setFixedHeight(25);
 
-    /* Group box Layout */
-    m_groupBoxLayout = new QHBoxLayout;
-    m_groupBoxLayout->setMargin(0);
-    m_groupBoxLayout->addWidget(m_openFileBox);
-    m_groupBoxLayout->addWidget(m_openButton);
-
-    /* Group box */
-    m_groupBox = new QGroupBox("Open media");
-    m_groupBox->setLayout(m_groupBoxLayout);
-
-    /* Main layout */
-    m_mainLayout = new QHBoxLayout;
-    m_mainLayout->setMargin(0);
-    m_mainLayout->addWidget(m_groupBox);
+    /* Layout */
+    m_layout = new QHBoxLayout;
+    m_layout->setMargin(0);
+    m_layout->addWidget(m_openFileBox);
+    m_layout->addWidget(m_openButton);
 
     /* Widget */
-    setContentsMargins(5, 5, 5, 5);
-    setLayout(m_mainLayout);
+    setLayout(m_layout);
 
     /* Connections */
     connect(m_openButton, &QPushButton::clicked, this, &OpenMediaPanel::slotOpenMedia);
