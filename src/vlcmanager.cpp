@@ -33,7 +33,7 @@ VlcManager::~VlcManager()
     delete m_instance;
 }
 
-const RtpSoutBuilder &VlcManager::getRtpSoutBuilder()
+RtpSoutBuilder &VlcManager::getRtpSoutBuilder()
 {
     return m_rtpSoutBuilder;
 }

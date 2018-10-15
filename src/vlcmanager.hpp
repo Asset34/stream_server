@@ -17,7 +17,7 @@ public:
     explicit VlcManager(QObject *parent = nullptr);
     virtual ~VlcManager();
 
-    const RtpSoutBuilder &getRtpSoutBuilder();
+    RtpSoutBuilder &getRtpSoutBuilder();
 
     void openMedia(const QString &path);
 
