@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 
+#include <vlcmanager.hpp>
+
+class OpenMediaPanel;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -12,7 +16,13 @@ public:
     virtual ~MainWindow();
 
 private:
+    /* Panels */
+    OpenMediaPanel *m_openMediaPanel;
 
+    VlcManager m_vlcManager;
+
+private slots:
+    void slotHandleError(const QString &error);
 
 };
 
