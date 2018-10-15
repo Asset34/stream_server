@@ -47,11 +47,13 @@ void VlcManager::openMedia(const QString &path)
     }
 
     resetMedia(path);
+
+    m_mediaPlayer->openOnly(m_media);
 }
 
 void VlcManager::playStream()
 {
-    QString option = m_rtpSoutBuilder.getSout();
+    QString option = buildResultSout();
     m_media->setOption(option);
 
     m_mediaPlayer->play();
