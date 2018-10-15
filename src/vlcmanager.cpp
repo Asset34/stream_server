@@ -33,9 +33,9 @@ VlcManager::~VlcManager()
     delete m_instance;
 }
 
-const SoutBuilder &VlcManager::getSoutBuilder()
+const RtpSoutBuilder &VlcManager::getRtpSoutBuilder()
 {
-    return m_soutBuilder;
+    return m_rtpSoutBuilder;
 }
 
 void VlcManager::openMedia(const QString &path)
@@ -51,7 +51,7 @@ void VlcManager::openMedia(const QString &path)
 
 void VlcManager::playStream()
 {
-    QString option = m_soutBuilder.getSout();
+    QString option = m_rtpSoutBuilder.getSout();
     m_media->setOption(option);
 
     m_mediaPlayer->play();
@@ -70,6 +70,16 @@ void VlcManager::resumeStream()
 void VlcManager::stopStream()
 {
     m_mediaPlayer->stop();
+}
+
+QString VlcManager::buildResultSout()
+{
+    QString sout;
+
+    sout.append("sout=#");
+    sout.append(m_rtpSoutBuilder.getSout());
+
+    return sout;
 }
 
 bool VlcManager::checkMediaFile(const QString &path) const

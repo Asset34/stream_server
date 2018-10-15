@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#include <soutbuilder.hpp>
+#include <rtpsoutbuilder.hpp>
 
 class VlcInstance;
 class VlcMedia;
@@ -17,7 +17,7 @@ public:
     explicit VlcManager(QObject *parent = nullptr);
     virtual ~VlcManager();
 
-    const SoutBuilder &getSoutBuilder();
+    const RtpSoutBuilder &getRtpSoutBuilder();
 
     void openMedia(const QString &path);
 
@@ -27,6 +27,8 @@ public:
     void stopStream();
 
 private:
+    QString buildResultSout();
+
     bool checkMediaFile(const QString &path) const;
 
     void clearMedia();
@@ -37,7 +39,7 @@ private:
     VlcMedia *m_media;
     VlcMediaPlayer *m_mediaPlayer;
 
-    SoutBuilder m_soutBuilder;
+    RtpSoutBuilder m_rtpSoutBuilder;
 
 signals:
     void mediaStateChanged();
