@@ -35,6 +35,9 @@ OpenMediaPanel::OpenMediaPanel(VlcManager *vlcManager, QWidget *parent)
     /* Widget */
     setContentsMargins(5, 5, 5, 5);
     setLayout(m_mainLayout);
+
+    /* Connections */
+    connect(m_openButton, &QPushButton::clicked, this, &OpenMediaPanel::slotOpenMedia);
 }
 
 OpenMediaPanel::~OpenMediaPanel()
