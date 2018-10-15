@@ -6,6 +6,7 @@
 #include <vlcmanager.hpp>
 
 class OpenMediaPanel;
+class StreamDstPanel;
 
 class MainWindow : public QMainWindow
 {
@@ -16,8 +17,8 @@ public:
     virtual ~MainWindow();
 
 private:
-    /* Panels */
     OpenMediaPanel *m_openMediaPanel;
+    StreamDstPanel *m_streamDstPanel;
 
     VlcManager m_vlcManager;
 
