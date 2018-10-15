@@ -5,6 +5,9 @@
 #include <VLCQtCore/MediaPlayer.h>
 #include <VLCQtCore/Error.h>
 
+#include <QDebug>
+#include <QFileInfo>
+
 VlcManager::VlcManager(QObject *parent)
     : QObject(parent),
       m_instance(nullptr),
@@ -37,9 +40,13 @@ const SoutBuilder &VlcManager::getSoutBuilder()
 
 void VlcManager::openMedia(const QString &path)
 {
-    delete m_media;
-    m_media = new VlcMedia(path, true, m_instance);
-    m_mediaPlayer->openOnly(m_media);
+    // Check path
+    if (!checkMediaFile(path)) {
+        emit errorOccured("Invalid file");
+        return;
+    }
+
+    resetMedia(path);
 }
 
 void VlcManager::playStream()
@@ -58,4 +65,32 @@ void VlcManager::pauseStream()
 void VlcManager::resumeStream()
 {
     m_mediaPlayer->resume();
+}
+
+void VlcManager::stopStream()
+{
+    m_mediaPlayer->stop();
+}
+
+bool VlcManager::checkMediaFile(const QString &path) const
+{
+    return QFileInfo::exists(path) &&
+            QFileInfo(path).isFile();
+}
+
+void VlcManager::clearMedia()
+{
+    delete m_media;
+    m_media = nullptr;
+}
+
+void VlcManager::setMedia(const QString &path)
+{
+    m_media = new VlcMedia(path, true, m_instance);
+}
+
+void VlcManager::resetMedia(const QString &path)
+{
+    clearMedia();
+    setMedia(path);
 }

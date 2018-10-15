@@ -24,13 +24,24 @@ public:
     void playStream();
     void pauseStream();
     void resumeStream();
+    void stopStream();
 
 private:
+    bool checkMediaFile(const QString &path) const;
+
+    void clearMedia();
+    void setMedia(const QString &path);
+    void resetMedia(const QString &path);
+
     VlcInstance *m_instance;
     VlcMedia *m_media;
     VlcMediaPlayer *m_mediaPlayer;
 
     SoutBuilder m_soutBuilder;
+
+signals:
+    void mediaStateChanged();
+    void errorOccured(const QString &error);
 
 };
 
