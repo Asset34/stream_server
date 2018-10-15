@@ -1,4 +1,4 @@
-#include "rtpSoutBuilder.hpp"
+#include "rtpsoutbuilder.hpp"
 
 RtpSoutBuilder::RtpSoutBuilder()
     : m_sap(false)
