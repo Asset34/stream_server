@@ -40,5 +40,9 @@ QString RtpSoutBuilder::getSout() const
         sap = "sap";
     }
 
-    return sout.arg(sap, m_ip, m_port, m_sapName);
+    return sout
+        .arg(sap)
+        .arg(m_ip)
+        .arg(m_port)
+        .arg(m_sapName);
 }
