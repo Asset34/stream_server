@@ -1,7 +1,5 @@
 #include "streamdstpanel.hpp"
 
-#include "rtpsoutbuilder.hpp"
-
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -63,12 +61,12 @@ StreamDstPanel::~StreamDstPanel()
 
 void StreamDstPanel::slotPlayStream()
 {
-    RtpSoutBuilder &builder = m_vlcManager->getRtpSoutBuilder();
+    SoutBuilder &builder = m_vlcManager->getSoutBuilder();
 
-    builder.setIp(m_ipInputBox->getText());
-    builder.setPort(m_portInputBox->getText());
-    builder.setSapStatus(m_sapCheckBox->isChecked());
-    builder.setSapName(m_sapNameInputBox->getText());
+    builder.setRtpIp(m_ipInputBox->getText());
+    builder.setRtpPort(m_portInputBox->getText().toInt());
+    builder.setSapEnabled(m_sapCheckBox->isChecked());
+    builder.setRtpName(m_sapNameInputBox->getText());
 
     m_vlcManager->playStream();
 }
