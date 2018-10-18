@@ -1,5 +1,5 @@
-#ifndef OPENMEDIAPANEL_HPP
-#define OPENMEDIAPANEL_HPP
+#ifndef MEDIAPANEL_HPP
+#define MEDIAPANEL_HPP
 
 #include <QWidget>
 
@@ -9,14 +9,14 @@ class QHBoxLayout;
 class QPushButton;
 class OpenFileBox;
 
-class OpenMediaPanel : public QWidget
+class MediaPanel : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit OpenMediaPanel(VlcManager *vlcManager,
+    explicit MediaPanel(VlcManager *vlcManager,
                             QWidget *parent = nullptr);
-    virtual ~OpenMediaPanel();
+    virtual ~MediaPanel();
 
 private:
     QHBoxLayout *m_layout;
@@ -30,4 +30,4 @@ private slots:
 
 };
 
-#endif // OPENMEDIAPANEL_HPP
+#endif // MEDIAPANEL_HPP

@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include <QDockWidget>
 
-#include <ui/panels/openmediapanel.hpp>
+#include <ui/panels/mediapanel.hpp>
 #include <ui/panels/streamdstpanel.hpp>
 #include <ui/panels/transcodepanel.hpp>
 
@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     /* Open media panel */
-    m_openMediaPanel = new OpenMediaPanel(&m_vlcManager);
+    m_mediaPanel = new MediaPanel(&m_vlcManager);
 
     /* Transcode panel */
     m_transcodePanel = new TranscodePanel(&m_vlcManager);
@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_streamDstPanel = new StreamDstPanel(&m_vlcManager);
 
     QDockWidget *dock = new QDockWidget("Open media", this);
-    dock->setWidget(m_openMediaPanel);
+    dock->setWidget(m_mediaPanel);
     addDockWidget(Qt::TopDockWidgetArea, dock);
 
     dock = new QDockWidget("Transcode", this);

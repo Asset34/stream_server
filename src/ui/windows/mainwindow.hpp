@@ -5,7 +5,7 @@
 
 #include <vlcmanager.hpp>
 
-class OpenMediaPanel;
+class MediaPanel;
 class StreamDstPanel;
 class TranscodePanel;
 
@@ -18,7 +18,7 @@ public:
     virtual ~MainWindow();
 
 private:
-    OpenMediaPanel *m_openMediaPanel;
+    MediaPanel *m_mediaPanel;
     TranscodePanel *m_transcodePanel;
     StreamDstPanel *m_streamDstPanel;
 

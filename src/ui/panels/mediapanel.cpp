@@ -1,11 +1,11 @@
-#include "openmediapanel.hpp"
+#include "mediapanel.hpp"
 
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <ui/widgets/openfilebox.hpp>
 
-OpenMediaPanel::OpenMediaPanel(VlcManager *vlcManager, QWidget *parent)
+MediaPanel::MediaPanel(VlcManager *vlcManager, QWidget *parent)
     : QWidget(parent),
       m_vlcManager(vlcManager)
 {
@@ -28,14 +28,14 @@ OpenMediaPanel::OpenMediaPanel(VlcManager *vlcManager, QWidget *parent)
     setLayout(m_layout);
 
     /* Connections */
-    connect(m_openButton, &QPushButton::clicked, this, &OpenMediaPanel::slotOpenMedia);
+    connect(m_openButton, &QPushButton::clicked, this, &MediaPanel::slotOpenMedia);
 }
 
-OpenMediaPanel::~OpenMediaPanel()
+MediaPanel::~MediaPanel()
 {
 }
 
-void OpenMediaPanel::slotOpenMedia()
+void MediaPanel::slotOpenMedia()
 {
     m_vlcManager->openMedia(m_openFileBox->getPath());
 }
