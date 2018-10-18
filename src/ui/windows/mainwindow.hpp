@@ -7,6 +7,7 @@
 
 class OpenMediaPanel;
 class StreamDstPanel;
+class TranscodePanel;
 
 class MainWindow : public QMainWindow
 {
@@ -18,6 +19,7 @@ public:
 
 private:
     OpenMediaPanel *m_openMediaPanel;
+    TranscodePanel *m_transcodePanel;
     StreamDstPanel *m_streamDstPanel;
 
     VlcManager m_vlcManager;
