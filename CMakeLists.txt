@@ -14,8 +14,7 @@ set (SOURCES
     ${SOURCES_DIR}/main.cpp
     ${SOURCES_DIR}/ui/windows/mainwindow.cpp
     ${SOURCES_DIR}/ui/panels/mediapanel.cpp
-    ${SOURCES_DIR}/ui/panels/streamdstpanel.cpp
-    ${SOURCES_DIR}/ui/panels/transcodepanel.cpp
+    ${SOURCES_DIR}/ui/panels/streampanel.cpp
     ${SOURCES_DIR}/ui/widgets/openfilebox.cpp
     ${SOURCES_DIR}/ui/widgets/inputbox.cpp
     ${SOURCES_DIR}/ui/widgets/outputbox.cpp
@@ -27,8 +26,7 @@ set (SOURCES
 set (HEADERS
     ${HEADERS_DIR}/ui/windows/mainwindow.hpp
     ${HEADERS_DIR}/ui/panels/mediapanel.hpp
-    ${HEADERS_DIR}/ui/panels/streamdstpanel.hpp
-    ${HEADERS_DIR}/ui/panels/transcodepanel.hpp
+    ${HEADERS_DIR}/ui/panels/streampanel.hpp
     ${HEADERS_DIR}/ui/widgets/openfilebox.hpp
     ${HEADERS_DIR}/ui/widgets/inputbox.hpp
     ${HEADERS_DIR}/ui/widgets/outputbox.hpp

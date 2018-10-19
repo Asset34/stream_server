@@ -5,7 +5,8 @@
 #include <QPushButton>
 #include <ui/widgets/openfilebox.hpp>
 
-MediaPanel::MediaPanel(VlcManager *vlcManager, QWidget *parent)
+MediaPanel::MediaPanel(VlcManager *vlcManager,
+                       QWidget *parent)
     : QWidget(parent),
       m_vlcManager(vlcManager)
 {
