@@ -17,7 +17,7 @@ public:
     explicit VlcManager(QObject *parent = nullptr);
     virtual ~VlcManager();
 
-    void openMedia(const QString &path);
+    void setMedia(const QString &path);
 
     SoutBuilder &getSoutBuilder();
 
@@ -29,9 +29,10 @@ public:
 private:
     bool checkMediaFile(const QString &path) const;
 
+    void createMedia(const QString &path);
     void clearMedia();
-    void setMedia(const QString &path);
     void resetMedia(const QString &path);
+    void parseMedia();
 
     VlcInstance *m_instance;
     VlcMedia *m_media;
@@ -39,9 +40,14 @@ private:
 
     SoutBuilder m_soutBuilder;
 
+private slots:
+    void handleParseResult(bool status);
+    void handleStateChange(const Vlc::State &state);
+
 signals:
-    void mediaStateChanged();
-    void errorOccured(const QString &error);
+    void mediaSetted(bool setted);
+    void mediaStateChanged(QString state);
+    void errorOccured(QString error);
 
 };
 

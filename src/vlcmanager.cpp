@@ -33,7 +33,7 @@ VlcManager::~VlcManager()
     delete m_instance;
 }
 
-void VlcManager::openMedia(const QString &path)
+void VlcManager::setMedia(const QString &path)
 {
     // Check path
     if (!checkMediaFile(path)) {
@@ -42,8 +42,7 @@ void VlcManager::openMedia(const QString &path)
     }
 
     resetMedia(path);
-
-    m_mediaPlayer->openOnly(m_media);
+    parseMedia();
 }
 
 SoutBuilder &VlcManager::getSoutBuilder()
@@ -54,7 +53,8 @@ SoutBuilder &VlcManager::getSoutBuilder()
 void VlcManager::playStream()
 {
     m_media->setOption(m_soutBuilder.buildSout());
-    m_mediaPlayer->play();
+    m_mediaPlayer->open(m_media);
+//    m_mediaPlayer->play();
 }
 
 void VlcManager::pauseStream()
@@ -75,7 +75,19 @@ void VlcManager::stopStream()
 bool VlcManager::checkMediaFile(const QString &path) const
 {
     return QFileInfo::exists(path) &&
-            QFileInfo(path).isFile();
+           QFileInfo(path).isFile();
+}
+
+void VlcManager::createMedia(const QString &path)
+{
+    m_media = new VlcMedia(path, true, m_instance);
+    connect(m_media, &VlcMedia::stateChanged, this, &VlcManager::handleStateChange);
+    connect(
+        m_media,
+        static_cast<void (VlcMedia::*)(bool)>(&VlcMedia::parsedChanged),
+        this,
+        &VlcManager::handleParseResult
+    );
 }
 
 void VlcManager::clearMedia()
@@ -84,13 +96,27 @@ void VlcManager::clearMedia()
     m_media = nullptr;
 }
 
-void VlcManager::setMedia(const QString &path)
-{
-    m_media = new VlcMedia(path, true, m_instance);
-}
-
 void VlcManager::resetMedia(const QString &path)
 {
     clearMedia();
-    setMedia(path);
+    createMedia(path);
+}
+
+void VlcManager::parseMedia()
+{
+    m_media->parse();
+}
+
+void VlcManager::handleParseResult(bool status)
+{
+    if (!status) {
+        clearMedia();
+    }
+
+    emit mediaSetted(status);
+}
+
+void VlcManager::handleStateChange(const Vlc::State &state)
+{
+    emit mediaStateChanged(Vlc::state(state));
 }
