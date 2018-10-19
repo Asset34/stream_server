@@ -35,7 +35,7 @@ MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::handleError(const QString &error)
+void MainWindow::handleError(QString error)
 {
     QMessageBox errorBox(this);
     errorBox.setWindowTitle("Error");
