@@ -133,20 +133,23 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
 
     /* Widget */
     setLayout(m_mainLayout);
+    setEnabled(false);
 
     /* Connections */
     connect(m_runStreamButton, &QPushButton::clicked, this, &StreamPanel::slotPlayStream);
     connect(m_transcodeEnableCheckBox, &QCheckBox::toggled, this, &StreamPanel::slotTranscodeSetEnabled);
+    connect(m_vlcManager, &VlcManager::mediaSetted, this, &StreamPanel::setEnabled);
 }
 
 StreamPanel::~StreamPanel()
 {
 }
 
-void StreamPanel::slotPlayStream()
+void StreamPanel::setParameters()
 {
     SoutBuilder &builder = m_vlcManager->getSoutBuilder();
 
+    // Set transcode parameters
     builder.setTranscodeEnabled(m_transcodeEnableCheckBox->isChecked());
     if (m_transcodeEnableCheckBox->isChecked()) {
         builder.setTrcVideoCodec(static_cast<Vlc::VideoCodec>(m_vcodecSelectBox->currentData().toInt()));
@@ -159,11 +162,16 @@ void StreamPanel::slotPlayStream()
         builder.setTrcAudioSampleRate(m_sampleRateInputBox->getText().toInt());
     }
 
+    // Set rtp parameters
     builder.setRtpName(m_nameInputBox->getText());
     builder.setRtpIp(m_ipInputBox->getText());
     builder.setRtpPort(m_portInputBox->getText().toInt());
     builder.setSapEnabled(m_sapCheckBox->isChecked());
+}
 
+void StreamPanel::slotPlayStream()
+{
+    setParameters();
     m_vlcManager->playStream();
 }
 

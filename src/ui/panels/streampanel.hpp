@@ -23,6 +23,8 @@ public:
     virtual ~StreamPanel();
 
 private:
+    void setParameters();
+
     QVBoxLayout *m_mainLayout;
     QVBoxLayout *m_transcodeLayout;
     QVBoxLayout *m_videoLayout;
