@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <ui/widgets/openfilebox.hpp>
 
+#include <QDebug>
+
 MediaPanel::MediaPanel(VlcManager *vlcManager,
                        QWidget *parent)
     : QWidget(parent),
@@ -15,28 +17,28 @@ MediaPanel::MediaPanel(VlcManager *vlcManager,
                                     "C:\\Users\\User\\Desktop\\Study\\6th_Semester\\Computer_Networks\\CW\\Video_samples");
 
     /* Open button */
-    m_openButton = new QPushButton("Open");
-    m_openButton->setFixedWidth(50);
-    m_openButton->setFixedHeight(25);
+    m_setButton = new QPushButton("Set");
+    m_setButton->setFixedWidth(50);
+    m_setButton->setFixedHeight(25);
 
     /* Layout */
     m_layout = new QHBoxLayout;
     m_layout->setMargin(0);
     m_layout->addWidget(m_openFileBox);
-    m_layout->addWidget(m_openButton);
+    m_layout->addWidget(m_setButton);
 
     /* Widget */
     setLayout(m_layout);
 
     /* Connections */
-    connect(m_openButton, &QPushButton::clicked, this, &MediaPanel::slotOpenMedia);
+    connect(m_setButton, &QPushButton::clicked, this, &MediaPanel::setMedia);
 }
 
 MediaPanel::~MediaPanel()
 {
 }
 
-void MediaPanel::slotOpenMedia()
+void MediaPanel::setMedia()
 {
-    m_vlcManager->openMedia(m_openFileBox->getPath());
+    m_vlcManager->setMedia(m_openFileBox->getPath());
 }

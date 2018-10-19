@@ -21,12 +21,12 @@ public:
 private:
     QHBoxLayout *m_layout;
     OpenFileBox *m_openFileBox;
-    QPushButton *m_openButton;
+    QPushButton *m_setButton;
 
     VlcManager *m_vlcManager;
 
 private slots:
-    void slotOpenMedia();
+    void setMedia();
 
 };
 
