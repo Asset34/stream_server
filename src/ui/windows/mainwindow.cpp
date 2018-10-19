@@ -9,10 +9,10 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    /* Open media panel */
+    // Open media panel
     m_mediaPanel = new MediaPanel(&m_vlcManager);
 
-    /* Stream destination panel */
+    // Stream destination panel
     m_streamPanel = new StreamPanel(&m_vlcManager);
 
     QDockWidget *dock = new QDockWidget("Media", this);
@@ -23,11 +23,11 @@ MainWindow::MainWindow(QWidget *parent)
     dock->setWidget(m_streamPanel);
     addDockWidget(Qt::BottomDockWidgetArea, dock);
 
-    /* Window */
+    // Window
     setWindowTitle("Stream server");
     setContentsMargins(10, 10, 10, 10);
 
-    /* Connections */
+    // Connections
     connect(&m_vlcManager, &VlcManager::errorOccured, this, &MainWindow::handleError);
 }
 

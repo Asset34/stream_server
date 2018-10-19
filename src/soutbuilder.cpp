@@ -2,7 +2,6 @@
 
 SoutBuilder::SoutBuilder()
 {
-    /* Create templates */
     m_generalTemplate = "sout=#%1%2%3";
     m_rtpTemplate = "rtp{"
         "mux=ts"  ","
@@ -90,14 +89,14 @@ void SoutBuilder::setTrcAudioSampleRate(int sampleRate)
 
 QString SoutBuilder::buildSout()
 {
-    /* Build rtp sout */
+    // Build rtp sout
     QString rtpSout = m_rtpTemplate
     .arg(m_sap ? "sap" : "")
     .arg(m_rtpIp)
     .arg(m_rtpPort)
     .arg(m_rtpName);
 
-    /* Build transcode sout */
+    // Build transcode sout
     QString trcSout;
     if (m_transcode) {
         trcSout = m_transcodeTemplate
@@ -111,7 +110,7 @@ QString SoutBuilder::buildSout()
         .arg(m_trcASampleRate);
     }
 
-    /* Build full sout */
+    // Build full sout
     QString sout = m_generalTemplate
     .arg(trcSout)
     .arg(m_transcode ? ":" : "")
@@ -127,14 +126,3 @@ int SoutBuilder::computeVideoWidth() const
 
     return m_trcVHeight * factor;
 }
-//m_transcodeTemplate = "transcode{"
-//    "vcodec=%1"   ","
-//    "vb=%2"       ","
-//    "width=%3"    ","
-//    "height=%4"   ","
-//    "fps=%5"      ","
-//    "acodec=%6"   ","
-//    "ab=%7"       ","
-//    "channels=%8" ","
-//    "samplerate=%9"
-//"}";

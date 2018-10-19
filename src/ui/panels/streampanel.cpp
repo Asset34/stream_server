@@ -101,29 +101,29 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     m_transcodeGroupBox->setContentsMargins(10, 15, 10, 10);
     m_transcodeGroupBox->setLayout(m_transcodeLayout);
 
-    /* Ip input box */
+    // Ip input box
     m_ipInputBox = new InputBox("Ip");
 
-    /* Port input box */
+    // Port input box
     m_portInputBox = new InputBox;
 
-    /* SAP check box */
+    // SAP check box
     m_sapCheckBox = new QCheckBox("SAP");
     m_sapCheckBox->setChecked(false);
 
-    /* Name input */
+    // Name input
     m_nameInputBox = new InputBox("Name");
 
-    /* Address layout */
+    // Address layout
     m_addressLayout = new QHBoxLayout;
     m_addressLayout->setMargin(0);
     m_addressLayout->addWidget(m_ipInputBox);
     m_addressLayout->addWidget(m_portInputBox);
 
-    /* Start stream button */
+    // Start stream button
     m_runStreamButton = new QPushButton("Start stream");
 
-    /* Main layout */
+    // Main layout
     m_mainLayout = new QVBoxLayout;
     m_mainLayout->setMargin(0);
     m_mainLayout->addWidget(m_transcodeGroupBox);
@@ -132,11 +132,11 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     m_mainLayout->addWidget(m_sapCheckBox);
     m_mainLayout->addWidget(m_runStreamButton);
 
-    /* Widget */
+    // Widget
     setLayout(m_mainLayout);
     setEnabled(false);
 
-    /* Connections */
+    // Connections
     connect(m_runStreamButton, &QPushButton::clicked, this, &StreamPanel::playStream);
     connect(m_transcodeEnableCheckBox, &QCheckBox::toggled, this, &StreamPanel::transcodeSetEnabled);
     connect(m_vlcManager, &VlcManager::mediaSetted, this, &StreamPanel::setEnabled);

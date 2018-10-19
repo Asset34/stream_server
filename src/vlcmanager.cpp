@@ -54,7 +54,6 @@ void VlcManager::playStream()
 {
     m_media->setOption(m_soutBuilder.buildSout());
     m_mediaPlayer->open(m_media);
-//    m_mediaPlayer->play();
 }
 
 void VlcManager::pauseStream()

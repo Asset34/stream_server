@@ -12,25 +12,25 @@ MediaPanel::MediaPanel(VlcManager *vlcManager,
     : QWidget(parent),
       m_vlcManager(vlcManager)
 {
-    /* Open file box */
+    // Open file box
     m_openFileBox = new OpenFileBox("Path",
                                     "C:\\Users\\User\\Desktop\\Study\\6th_Semester\\Computer_Networks\\CW\\Video_samples");
 
-    /* Open button */
+    // Open button
     m_setButton = new QPushButton("Set");
     m_setButton->setFixedWidth(50);
     m_setButton->setFixedHeight(25);
 
-    /* Layout */
+    // Layout
     m_layout = new QHBoxLayout;
     m_layout->setMargin(0);
     m_layout->addWidget(m_openFileBox);
     m_layout->addWidget(m_setButton);
 
-    /* Widget */
+    // Widget
     setLayout(m_layout);
 
-    /* Connections */
+    // Connections
     connect(m_setButton, &QPushButton::clicked, this, &MediaPanel::setMedia);
 }
 
