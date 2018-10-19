@@ -12,7 +12,8 @@
 
 StreamPanel::StreamPanel(VlcManager *vlcManager,
                          QWidget *parent)
-    : m_vlcManager(vlcManager)
+    : QWidget(parent),
+      m_vlcManager(vlcManager)
 {
     // Enable check box
     m_transcodeEnableCheckBox = new QCheckBox("Enable");
