@@ -21,7 +21,7 @@ public:
     void setRtpName(const QString &name);
     void setTrcVideoCodec(Vlc::VideoCodec codec);
     void setTrcVideoBitrate(int bitrate);
-    void setTrcVideoHeight(int height);
+    void setTrcVideoQuality(int height);
     void setTrcVideoAspectRatio(Vlc::Ratio ratio);
     void setTrcVideoFrameRate(int frameRate);
     void setTrcAudioCodec(Vlc::AudioCodec codec);

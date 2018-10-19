@@ -58,7 +58,7 @@ void SoutBuilder::setTrcVideoBitrate(int bitrate)
     m_trcVBitrate = bitrate;
 }
 
-void SoutBuilder::setTrcVideoHeight(int height)
+void SoutBuilder::setTrcVideoQuality(int height)
 {
     m_trcVHeight = height;
 }
