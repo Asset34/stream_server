@@ -56,8 +56,8 @@ private:
     VlcManager *m_vlcManager;
 
 private slots:
-    void slotPlayStream();
-    void slotTranscodeSetEnabled(bool enabled);
+    void playStream();
+    void transcodeSetEnabled(bool enabled);
 
 };
 

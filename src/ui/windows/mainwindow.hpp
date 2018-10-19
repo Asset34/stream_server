@@ -23,7 +23,7 @@ private:
     VlcManager m_vlcManager;
 
 private slots:
-    void slotHandleError(const QString &error);
+    void handleError(const QString &error);
 
 };
 

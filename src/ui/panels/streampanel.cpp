@@ -137,8 +137,8 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     setEnabled(false);
 
     /* Connections */
-    connect(m_runStreamButton, &QPushButton::clicked, this, &StreamPanel::slotPlayStream);
-    connect(m_transcodeEnableCheckBox, &QCheckBox::toggled, this, &StreamPanel::slotTranscodeSetEnabled);
+    connect(m_runStreamButton, &QPushButton::clicked, this, &StreamPanel::playStream);
+    connect(m_transcodeEnableCheckBox, &QCheckBox::toggled, this, &StreamPanel::transcodeSetEnabled);
     connect(m_vlcManager, &VlcManager::mediaSetted, this, &StreamPanel::setEnabled);
 }
 
@@ -170,13 +170,13 @@ void StreamPanel::setParameters()
     builder.setSapEnabled(m_sapCheckBox->isChecked());
 }
 
-void StreamPanel::slotPlayStream()
+void StreamPanel::playStream()
 {
     setParameters();
     m_vlcManager->playStream();
 }
 
-void StreamPanel::slotTranscodeSetEnabled(bool enabled)
+void StreamPanel::transcodeSetEnabled(bool enabled)
 {
     m_videoGroupBox->setEnabled(enabled);
     m_audioGroupBox->setEnabled(enabled);

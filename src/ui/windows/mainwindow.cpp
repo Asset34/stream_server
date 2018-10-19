@@ -28,14 +28,14 @@ MainWindow::MainWindow(QWidget *parent)
     setContentsMargins(10, 10, 10, 10);
 
     /* Connections */
-    connect(&m_vlcManager, &VlcManager::errorOccured, this, &MainWindow::slotHandleError);
+    connect(&m_vlcManager, &VlcManager::errorOccured, this, &MainWindow::handleError);
 }
 
 MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::slotHandleError(const QString &error)
+void MainWindow::handleError(const QString &error)
 {
     QMessageBox errorBox(this);
     errorBox.setWindowTitle("Error");
