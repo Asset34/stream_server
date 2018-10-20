@@ -22,11 +22,11 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
 
     // Video codec select box
     m_vcodecSelectBox = new SelectBox("Codec");
-    m_vcodecSelectBox->addItem("None"  , Vlc::NoVideo);
+    m_vcodecSelectBox->addItem("MPEG1V", Vlc::MPEG1Video);
     m_vcodecSelectBox->addItem("MPEG2V", Vlc::MPEG2Video);
     m_vcodecSelectBox->addItem("MPEG4V", Vlc::MPEG4Video);
     m_vcodecSelectBox->addItem("H.264" , Vlc::H264);
-    m_vcodecSelectBox->addItem("Theora", Vlc::Theora);
+    m_vcodecSelectBox->addItem("JPEG"  , Vlc::JPEG);
 
     // Quality select box
     m_qualitySelectBox = new SelectBox("Quality");
@@ -38,7 +38,6 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
 
     // Aspect ratio select box
     m_aspectRatioSelectBox = new SelectBox("Aspect ratio");
-    m_aspectRatioSelectBox->addItem("Original", Vlc::Original);
     m_aspectRatioSelectBox->addItem("4:3"     , Vlc::R_4_3);
     m_aspectRatioSelectBox->addItem("16:9"    , Vlc::R_16_9);
     m_aspectRatioSelectBox->addItem("16:10"   , Vlc::R_16_10);
@@ -65,12 +64,10 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
 
     // Audio codec
     m_acodecSelectBox = new SelectBox("Codec");
-    m_acodecSelectBox->addItem("None"  , Vlc::NoAudio);
     m_acodecSelectBox->addItem("MPEG2A", Vlc::MPEG2Audio);
     m_acodecSelectBox->addItem("MP3"   , Vlc::MP3);
     m_acodecSelectBox->addItem("MPEG4A", Vlc::MPEG4Audio);
-    m_acodecSelectBox->addItem("Vorbis", Vlc::Vorbis);
-    m_acodecSelectBox->addItem("Flac"  , Vlc::Flac);
+    m_acodecSelectBox->addItem("A52"   , Vlc::A52);
 
     // Audio bitrate
     m_abitrateInputBox = new InputBox("Bitrate");
