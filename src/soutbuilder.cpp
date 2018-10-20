@@ -11,13 +11,15 @@ SoutBuilder::SoutBuilder()
         "name=%4"
     "}";
     m_transcodeTemplate = "transcode{"
-        "vcodec=%1"   ","
-        "vb=%2"       ","
-        "height=%3"   ","
-        "width=%4"    ","
-        "fps=%5"      ","
-        "acodec=%6"   ","
-        "ab=%7"       ","
+        "aenc=ffmpeg{strict=-2}" ","
+        "vcodec=%1"              ","
+        "vb=%2"                  ","
+        "height=%3"              ","
+        "width=%4"               ","
+        "fps=%5"                 ","
+        "acodec=%6"              ","
+        "ab=%7"                  ","
+        "channels=2"             ","
         "samplerate=%8"
     "}";
 }
