@@ -17,11 +17,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     QDockWidget *dock = new QDockWidget("Media", this);
     dock->setWidget(m_mediaPanel);
-    addDockWidget(Qt::LeftDockWidgetArea, dock);
+    addDockWidget(Qt::TopDockWidgetArea, dock);
 
     dock = new QDockWidget("Stream", this);
     dock->setWidget(m_streamPanel);
-    addDockWidget(Qt::RightDockWidgetArea, dock);
+    addDockWidget(Qt::BottomDockWidgetArea, dock);
 
     // Window
     setWindowTitle("Stream server");
