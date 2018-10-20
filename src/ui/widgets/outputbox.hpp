@@ -23,6 +23,7 @@ public slots:
     void setText(const QString &text);
     void setValue(int value);
     void setValue(double value);
+    void clear();
 
 private:
     QHBoxLayout *m_layout;
