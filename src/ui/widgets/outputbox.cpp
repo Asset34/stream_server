@@ -48,3 +48,8 @@ void OutputBox::setValue(double value)
 {
     m_outputLabel->setText(QString::number(value));
 }
+
+void OutputBox::clear()
+{
+    m_outputLabel->clear();
+}
