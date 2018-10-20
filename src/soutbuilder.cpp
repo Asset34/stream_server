@@ -105,7 +105,7 @@ QString SoutBuilder::buildSout()
         .arg(m_trcVHeight)
         .arg(computeVideoWidth())
         .arg(m_trcVFrameRate)
-        .arg(m_trcACodec)
+        .arg(Vlc::audioCodec(m_trcACodec))
         .arg(m_trcABitrate)
         .arg(m_trcASampleRate);
     }
