@@ -47,8 +47,8 @@ find_package(Qt5Widgets REQUIRED)
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
 
 # Vlc-qt
-set(VLCQt_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(VLCQt_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(VLCQT_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(VLCQT_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 add_subdirectory(${LIBS_DIR}/vlc-qt)
 target_link_libraries(${PROJECT_NAME} Core)
 include_directories(${CMAKE_BINARY_DIR}/${LIBS_DIR}/vlc-qt/include)
