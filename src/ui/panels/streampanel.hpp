@@ -51,12 +51,19 @@ private:
     InputBox *m_portInputBox;
     InputBox *m_nameInputBox;
 
-    QPushButton *m_runStreamButton;
+    QPushButton *m_playStreamButton;
+    QPushButton *m_pauseStreamButton;
+    QPushButton *m_stopStreamButton;
 
     VlcManager *m_vlcManager;
 
+    bool m_isPaused;
+
 private slots:
     void playStream();
+    void pauseStream();
+    void stopStream();
+
     void transcodeSetEnabled(bool enabled);
 
 };

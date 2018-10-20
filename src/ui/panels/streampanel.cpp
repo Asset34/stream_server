@@ -13,7 +13,8 @@
 StreamPanel::StreamPanel(VlcManager *vlcManager,
                          QWidget *parent)
     : QWidget(parent),
-      m_vlcManager(vlcManager)
+      m_vlcManager(vlcManager),
+      m_isPaused(false)
 {
     // Enable check box
     m_transcodeEnableCheckBox = new QCheckBox("Enable");
@@ -120,8 +121,17 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     m_addressLayout->addWidget(m_ipInputBox);
     m_addressLayout->addWidget(m_portInputBox);
 
-    // Start stream button
-    m_runStreamButton = new QPushButton("Start stream");
+    // Play stream button
+    m_playStreamButton = new QPushButton("Play");
+    m_playStreamButton->setEnabled(true);
+
+    // Pause stream button
+    m_pauseStreamButton = new QPushButton("Pause");
+    m_pauseStreamButton->setEnabled(false);
+
+    // Stop stream button
+    m_stopStreamButton = new QPushButton("Stop");
+    m_stopStreamButton->setEnabled(false);
 
     // Main layout
     m_mainLayout = new QVBoxLayout;
@@ -130,14 +140,18 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     m_mainLayout->addWidget(m_nameInputBox);
     m_mainLayout->addLayout(m_addressLayout);
     m_mainLayout->addWidget(m_sapCheckBox);
-    m_mainLayout->addWidget(m_runStreamButton);
+    m_mainLayout->addWidget(m_playStreamButton);
+    m_mainLayout->addWidget(m_pauseStreamButton);
+    m_mainLayout->addWidget(m_stopStreamButton);
 
     // Widget
     setLayout(m_mainLayout);
     setEnabled(false);
 
     // Connections
-    connect(m_runStreamButton, &QPushButton::clicked, this, &StreamPanel::playStream);
+    connect(m_playStreamButton, &QPushButton::clicked, this, &StreamPanel::playStream);
+    connect(m_pauseStreamButton, &QPushButton::clicked, this, &StreamPanel::pauseStream);
+    connect(m_stopStreamButton, &QPushButton::clicked, this, &StreamPanel::stopStream);
     connect(m_transcodeEnableCheckBox, &QCheckBox::toggled, this, &StreamPanel::transcodeSetEnabled);
     connect(m_vlcManager, &VlcManager::mediaSetted, this, &StreamPanel::setEnabled);
 }
@@ -174,6 +188,33 @@ void StreamPanel::playStream()
 {
     setParameters();
     m_vlcManager->playStream();
+
+    m_playStreamButton->setEnabled(false);
+    m_pauseStreamButton->setEnabled(true);
+    m_stopStreamButton->setEnabled(true);
+}
+
+void StreamPanel::pauseStream()
+{
+    if (m_isPaused) {
+        m_vlcManager->resumeStream();
+        m_isPaused = false;
+        m_pauseStreamButton->setText("Pause");
+    }
+    else {
+        m_vlcManager->pauseStream();
+        m_isPaused = true;
+        m_pauseStreamButton->setText("Resume");
+    }
+}
+
+void StreamPanel::stopStream()
+{
+    m_vlcManager->stopStream();
+
+    m_playStreamButton->setEnabled(true);
+    m_pauseStreamButton->setEnabled(false);
+    m_stopStreamButton->setEnabled(false);
 }
 
 void StreamPanel::transcodeSetEnabled(bool enabled)
