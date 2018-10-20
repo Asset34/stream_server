@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     dock->setWidget(m_mediaPanel);
     addDockWidget(Qt::TopDockWidgetArea, dock);
 
-    dock = new QDockWidget("Stream.", this);
+    dock = new QDockWidget("Stream", this);
     dock->setWidget(m_streamPanel);
     addDockWidget(Qt::BottomDockWidgetArea, dock);
 
