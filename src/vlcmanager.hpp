@@ -2,6 +2,7 @@
 #define VLCMANAGER_HPP
 
 #include <QObject>
+#include <QTime>
 
 #include <soutbuilder.hpp>
 
@@ -22,6 +23,7 @@ public:
     QString getMediaPath() const;
     QString getMediaTitle() const;
     QString getMediaDescription() const;
+    QTime getMediaDuration() const;
 
     SoutBuilder &getSoutBuilder();
 

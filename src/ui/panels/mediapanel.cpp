@@ -33,14 +33,19 @@ MediaPanel::MediaPanel(VlcManager *vlcManager,
     // Media title
     m_infoTitleOutputBox = new OutputBox("Title");
 
+    // Media duration
+    m_infoDurationOutputBox = new OutputBox("Duration");
+
     // Media description
     m_infoDescOutputBox = new OutputBox("Description");
+
 
     // Media info layout
     m_infoLayout = new QVBoxLayout;
     m_infoLayout->setMargin(0);
     m_infoLayout->addWidget(m_infoPathOutputBox);
     m_infoLayout->addWidget(m_infoTitleOutputBox);
+    m_infoLayout->addWidget(m_infoDurationOutputBox);
     m_infoLayout->addWidget(m_infoDescOutputBox);
 
     // Media info group box
@@ -71,16 +76,25 @@ void MediaPanel::setMedia()
     m_vlcManager->setMedia(m_setFileBox->getPath());
 }
 
+//#include <QTime>
+//#include <QString>
+
 void MediaPanel::setMediaInfo(bool status)
 {
     if (status) {
         m_infoPathOutputBox->setText(m_vlcManager->getMediaPath());
         m_infoTitleOutputBox->setText(m_vlcManager->getMediaTitle());
+
+//        QTime time = m_vlcManager->getMediaDuration();
+//        QString strTime = time.toString();
+
+        m_infoDurationOutputBox->setText(m_vlcManager->getMediaDuration().toString());
         m_infoDescOutputBox->setText(m_vlcManager->getMediaDescription());
     }
     else {
         m_infoPathOutputBox->clear();
         m_infoTitleOutputBox->clear();
+        m_infoDurationOutputBox->clear();
         m_infoDescOutputBox->clear();
     }
 }

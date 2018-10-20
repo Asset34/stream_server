@@ -31,6 +31,7 @@ private:
     OutputBox *m_infoPathOutputBox;
     OutputBox *m_infoTitleOutputBox;
     OutputBox *m_infoDescOutputBox;
+    OutputBox *m_infoDurationOutputBox;
 
     OpenFileBox *m_setFileBox;
 

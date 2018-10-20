@@ -78,6 +78,11 @@ QString VlcManager::getMediaDescription() const
     }
 }
 
+QTime VlcManager::getMediaDuration() const
+{
+    return QTime(0, 0 ,0 ,0).addMSecs(m_media->duration());
+}
+
 SoutBuilder &VlcManager::getSoutBuilder()
 {
     return m_soutBuilder;
