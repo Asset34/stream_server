@@ -1,5 +1,7 @@
 #include "streampanel.hpp"
 
+#include <QGridLayout>
+
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
@@ -105,6 +107,12 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     // Port input box
     m_portInputBox = new InputBox;
 
+    // Address layout
+    m_addressLayout = new QHBoxLayout;
+    m_addressLayout->setMargin(0);
+    m_addressLayout->addWidget(m_ipInputBox);
+    m_addressLayout->addWidget(m_portInputBox);
+
     // SAP check box
     m_sapCheckBox = new QCheckBox("SAP");
     m_sapCheckBox->setChecked(false);
@@ -112,43 +120,74 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     // Name input
     m_nameInputBox = new InputBox("Name");
 
-    // Address layout
-    m_addressLayout = new QHBoxLayout;
-    m_addressLayout->setMargin(0);
-    m_addressLayout->addWidget(m_ipInputBox);
-    m_addressLayout->addWidget(m_portInputBox);
+    // Destination layout
+    m_destLayout = new QVBoxLayout;
+    m_destLayout->setMargin(0);
+    m_destLayout->addWidget(m_nameInputBox);
+    m_destLayout->addLayout(m_addressLayout);
+    m_destLayout->addWidget(m_sapCheckBox);
+
+    // Destination group box
+    m_destGroupBox = new QGroupBox("Destination");
+    m_destGroupBox->setContentsMargins(10, 15, 10, 10);
+    m_destGroupBox->setLayout(m_destLayout);
+
+    // Status output box
+    m_statusOutputBox = new OutputBox("Status");
+
+    // Name output box
+    m_nameOutputBox = new OutputBox("Name");
+
+    // Position output box
+    m_posOutputBox = new OutputBox("Position");
+
+    // Info layout
+    m_infoLayout = new QVBoxLayout;
+    m_infoLayout->setMargin(0);
+    m_infoLayout->addWidget(m_statusOutputBox);
+    m_infoLayout->addWidget(m_nameOutputBox);
+    m_infoLayout->addWidget(m_posOutputBox);
+
+    // Info group box
+    m_infoGroupBox = new QGroupBox("Info");
+    m_infoGroupBox->setContentsMargins(10, 15, 10, 10);
+    m_infoGroupBox->setLayout(m_infoLayout);
 
     // Play stream button
-    m_playStreamButton = new QPushButton("Play");
-    m_playStreamButton->setEnabled(true);
+    m_playButton = new QPushButton("Play");
+    m_playButton->setEnabled(true);
 
     // Pause stream button
-    m_pauseStreamButton = new QPushButton("Pause");
-    m_pauseStreamButton->setEnabled(false);
+    m_pauseButton = new QPushButton("Pause");
+    m_pauseButton->setEnabled(false);
 
     // Stop stream button
-    m_stopStreamButton = new QPushButton("Stop");
-    m_stopStreamButton->setEnabled(false);
+    m_stopButton = new QPushButton("Stop");
+    m_stopButton->setEnabled(false);
 
-    // Main layout
-    m_mainLayout = new QVBoxLayout;
+    // Right additional panel
+    m_rightAdditionalLayout = new QVBoxLayout;
+    m_rightAdditionalLayout->setMargin(0);
+    m_rightAdditionalLayout->addWidget(m_destGroupBox);
+    m_rightAdditionalLayout->addWidget(m_infoGroupBox);
+    m_rightAdditionalLayout->addWidget(m_playButton);
+    m_rightAdditionalLayout->addWidget(m_pauseButton);
+    m_rightAdditionalLayout->addWidget(m_stopButton);
+
+    // Top additional panel
+    m_mainLayout = new QHBoxLayout;
     m_mainLayout->setMargin(0);
     m_mainLayout->addWidget(m_transcodeGroupBox);
-    m_mainLayout->addWidget(m_nameInputBox);
-    m_mainLayout->addLayout(m_addressLayout);
-    m_mainLayout->addWidget(m_sapCheckBox);
-    m_mainLayout->addWidget(m_playStreamButton);
-    m_mainLayout->addWidget(m_pauseStreamButton);
-    m_mainLayout->addWidget(m_stopStreamButton);
+    m_mainLayout->addLayout(m_rightAdditionalLayout);
 
     // Widget
     setLayout(m_mainLayout);
     setEnabled(false);
 
     // Connections
-    connect(m_playStreamButton, &QPushButton::clicked, this, &StreamPanel::playStream);
-    connect(m_pauseStreamButton, &QPushButton::clicked, this, &StreamPanel::pauseStream);
-    connect(m_stopStreamButton, &QPushButton::clicked, this, &StreamPanel::stopStream);
+    connect(m_playButton, &QPushButton::clicked, this, &StreamPanel::playStream);
+    connect(m_pauseButton, &QPushButton::clicked, this, &StreamPanel::pauseStream);
+    connect(m_stopButton, &QPushButton::clicked, this, &StreamPanel::stopStream);
     connect(m_transcodeEnableCheckBox, &QCheckBox::toggled, this, &StreamPanel::transcodeSetEnabled);
     connect(m_vlcManager, &VlcManager::mediaSetted, this, &StreamPanel::setEnabled);
 }
@@ -186,9 +225,9 @@ void StreamPanel::playStream()
     setParameters();
     m_vlcManager->playStream();
 
-    m_playStreamButton->setEnabled(false);
-    m_pauseStreamButton->setEnabled(true);
-    m_stopStreamButton->setEnabled(true);
+    m_playButton->setEnabled(false);
+    m_pauseButton->setEnabled(true);
+    m_stopButton->setEnabled(true);
 }
 
 void StreamPanel::pauseStream()
@@ -196,12 +235,12 @@ void StreamPanel::pauseStream()
     if (m_isPaused) {
         m_vlcManager->resumeStream();
         m_isPaused = false;
-        m_pauseStreamButton->setText("Pause");
+        m_pauseButton->setText("Pause");
     }
     else {
         m_vlcManager->pauseStream();
         m_isPaused = true;
-        m_pauseStreamButton->setText("Resume");
+        m_pauseButton->setText("Resume");
     }
 }
 
@@ -209,9 +248,9 @@ void StreamPanel::stopStream()
 {
     m_vlcManager->stopStream();
 
-    m_playStreamButton->setEnabled(true);
-    m_pauseStreamButton->setEnabled(false);
-    m_stopStreamButton->setEnabled(false);
+    m_playButton->setEnabled(true);
+    m_pauseButton->setEnabled(false);
+    m_stopButton->setEnabled(false);
 }
 
 void StreamPanel::transcodeSetEnabled(bool enabled)

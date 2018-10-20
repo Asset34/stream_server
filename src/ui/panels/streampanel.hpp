@@ -25,15 +25,20 @@ public:
 private:
     void setParameters();
 
-    QVBoxLayout *m_mainLayout;
+    QHBoxLayout *m_mainLayout;
     QVBoxLayout *m_transcodeLayout;
     QVBoxLayout *m_videoLayout;
     QVBoxLayout *m_audioLayout;
+    QVBoxLayout *m_destLayout;
+    QVBoxLayout *m_infoLayout;
+    QVBoxLayout *m_rightAdditionalLayout;
     QHBoxLayout *m_addressLayout;
 
     QGroupBox *m_transcodeGroupBox;
     QGroupBox *m_videoGroupBox;
     QGroupBox *m_audioGroupBox;
+    QGroupBox *m_destGroupBox;
+    QGroupBox *m_infoGroupBox;
 
     QCheckBox *m_transcodeEnableCheckBox;
     QCheckBox *m_sapCheckBox;
@@ -51,9 +56,13 @@ private:
     InputBox *m_portInputBox;
     InputBox *m_nameInputBox;
 
-    QPushButton *m_playStreamButton;
-    QPushButton *m_pauseStreamButton;
-    QPushButton *m_stopStreamButton;
+    OutputBox *m_statusOutputBox;
+    OutputBox *m_nameOutputBox;
+    OutputBox *m_posOutputBox;
+
+    QPushButton *m_playButton;
+    QPushButton *m_pauseButton;
+    QPushButton *m_stopButton;
 
     VlcManager *m_vlcManager;
 
