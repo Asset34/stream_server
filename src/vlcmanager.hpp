@@ -19,6 +19,10 @@ public:
 
     void setMedia(const QString &path);
 
+    QString getMediaPath() const;
+    QString getMediaTitle() const;
+    QString getMediaDescription() const;
+
     SoutBuilder &getSoutBuilder();
 
     void playStream();

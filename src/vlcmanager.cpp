@@ -2,6 +2,7 @@
 
 #include <VLCQtCore/Instance.h>
 #include <VLCQtCore/Media.h>
+#include <VLCQtCore/MetaManager.h>
 #include <VLCQtCore/MediaPlayer.h>
 #include <VLCQtCore/Error.h>
 
@@ -43,6 +44,38 @@ void VlcManager::setMedia(const QString &path)
 
     resetMedia(path);
     parseMedia();
+}
+
+QString VlcManager::getMediaPath() const
+{
+    if (m_media) {
+        return m_media->currentLocation();
+    }
+    else {
+        return QString();
+    }
+}
+
+QString VlcManager::getMediaTitle() const
+{
+    if (m_media) {
+        VlcMetaManager metaManager(m_media);
+        return metaManager.title();
+    }
+    else {
+        return QString();
+    }
+}
+
+QString VlcManager::getMediaDescription() const
+{
+    if (m_media) {
+        VlcMetaManager metaManager(m_media);
+        return metaManager.description();
+    }
+    else {
+        return QString();
+    }
 }
 
 SoutBuilder &VlcManager::getSoutBuilder()
