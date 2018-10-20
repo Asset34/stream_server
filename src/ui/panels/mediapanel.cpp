@@ -76,18 +76,11 @@ void MediaPanel::setMedia()
     m_vlcManager->setMedia(m_setFileBox->getPath());
 }
 
-//#include <QTime>
-//#include <QString>
-
 void MediaPanel::setMediaInfo(bool status)
 {
     if (status) {
         m_infoPathOutputBox->setText(m_vlcManager->getMediaPath());
         m_infoTitleOutputBox->setText(m_vlcManager->getMediaTitle());
-
-//        QTime time = m_vlcManager->getMediaDuration();
-//        QString strTime = time.toString();
-
         m_infoDurationOutputBox->setText(m_vlcManager->getMediaDuration().toString());
         m_infoDescOutputBox->setText(m_vlcManager->getMediaDescription());
     }
