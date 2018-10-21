@@ -16,6 +16,7 @@ set (SOURCES
     ${SOURCES_DIR}/ui/panels/mediapanel.cpp
     ${SOURCES_DIR}/ui/panels/streampanel.cpp
     ${SOURCES_DIR}/ui/subpanels/mediasetsubpanel.cpp
+    ${SOURCES_DIR}/ui/subpanels/mediainfosubpanel.cpp
     ${SOURCES_DIR}/ui/widgets/openfilebox.cpp
     ${SOURCES_DIR}/ui/widgets/inputbox.cpp
     ${SOURCES_DIR}/ui/widgets/outputbox.cpp
@@ -30,6 +31,7 @@ set (HEADERS
     ${HEADERS_DIR}/ui/panels/mediapanel.hpp
     ${HEADERS_DIR}/ui/panels/streampanel.hpp
     ${HEADERS_DIR}/ui/subpanels/mediasetsubpanel.hpp
+    ${HEADERS_DIR}/ui/subpanels/mediainfosubpanel.hpp
     ${HEADERS_DIR}/ui/widgets/openfilebox.hpp
     ${HEADERS_DIR}/ui/widgets/inputbox.hpp
     ${HEADERS_DIR}/ui/widgets/outputbox.hpp
