@@ -62,6 +62,7 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     // Create widget
     setLayout(m_mainLayout);
     setContentsMargins(5, 5, 5, 5);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     setEnabled(false);
 
     // Create connections

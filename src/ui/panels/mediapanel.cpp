@@ -12,6 +12,7 @@ MediaPanel::MediaPanel(VlcManager *vlcManager,
 {
     // Create set subpanel
     m_setSubpanel = new MediaSetSubpanel(vlcManager);
+    m_setSubpanel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 
     // Create info subpanel
     m_infoSubpanel = new MediaInfoSubpanel(vlcManager);
