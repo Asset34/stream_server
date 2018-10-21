@@ -22,6 +22,11 @@ VlcManager::VlcManager(QObject *parent)
 
     m_instance = new VlcInstance(args);
     m_mediaPlayer = new VlcMediaPlayer(m_instance);
+
+    connect(m_mediaPlayer, &VlcMediaPlayer::error,
+            [this](){
+        emit errorOccured(VlcError::errmsg());
+    });
 }
 
 VlcManager::~VlcManager()
