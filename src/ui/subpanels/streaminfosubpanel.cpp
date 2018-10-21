@@ -37,6 +37,7 @@ StreamInfoSubpanel::StreamInfoSubpanel(VlcManager *vlcManager,
     connect(m_vlcManager, &VlcManager::mediaStartedPlay,
             [this](){
         m_nameLabel->setText(m_vlcManager->getStreamName());
+        m_timePostWidget->setTimeLimit(m_vlcManager->getMediaDuration());
     });
     connect(m_vlcManager, &VlcManager::mediaStateChanged,
             [this](QString state) {
