@@ -15,7 +15,7 @@ public:
     explicit TimePositionWidget(QWidget *parent = nullptr);
     virtual ~TimePositionWidget();
 
-    void setMaximum(const QTime &time);
+    void setTimeLimit(const QTime &time);
 
 public slots:
     void updateTime(QTime time);
@@ -26,7 +26,7 @@ private:
 
     QLabel *m_timePosLabel;
     QLabel *m_separatorLabel;
-    QLabel *m_timeMaxLabel;
+    QLabel *m_timeLimitLabel;
 
 };
 
