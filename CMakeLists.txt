@@ -23,10 +23,6 @@ set (SOURCES
     ${SOURCES_DIR}/ui/subpanels/addresssubpanel.cpp
     ${SOURCES_DIR}/ui/subpanels/streaminfosubpanel.cpp
     ${SOURCES_DIR}/ui/widgets/openfilebox.cpp
-    ${SOURCES_DIR}/ui/widgets/inputbox.cpp
-    ${SOURCES_DIR}/ui/widgets/outputbox.cpp
-    ${SOURCES_DIR}/ui/widgets/selectbox.cpp
-    ${SOURCES_DIR}/ui/widgets/inputvaluebox.cpp
     ${SOURCES_DIR}/ui/widgets/videocodeccombobox.cpp
     ${SOURCES_DIR}/ui/widgets/qualitycombobox.cpp
     ${SOURCES_DIR}/ui/widgets/aspectratiocombobox.cpp
@@ -50,10 +46,6 @@ set (HEADERS
     ${HEADERS_DIR}/ui/subpanels/addresssubpanel.hpp
     ${HEADERS_DIR}/ui/subpanels/streaminfosubpanel.hpp
     ${HEADERS_DIR}/ui/widgets/openfilebox.hpp
-    ${HEADERS_DIR}/ui/widgets/inputbox.hpp
-    ${HEADERS_DIR}/ui/widgets/outputbox.hpp
-    ${HEADERS_DIR}/ui/widgets/selectbox.hpp
-    ${HEADERS_DIR}/ui/widgets/inputvaluebox.hpp
     ${HEADERS_DIR}/ui/widgets/videocodeccombobox.hpp
     ${HEADERS_DIR}/ui/widgets/qualitycombobox.hpp
     ${HEADERS_DIR}/ui/widgets/aspectratiocombobox.hpp
