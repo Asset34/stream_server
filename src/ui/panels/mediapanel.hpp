@@ -6,11 +6,8 @@
 #include <vlcmanager.hpp>
 
 class QVBoxLayout;
-class QHBoxLayout;
-class QGroupBox;
-class QPushButton;
-class OpenFileBox;
-class OutputBox;
+class MediaSetSubpanel;
+class MediaInfoSubpanel;
 
 class MediaPanel : public QWidget
 {
@@ -22,26 +19,12 @@ public:
     virtual ~MediaPanel();
 
 private:
-    QVBoxLayout *m_mainLayout;
-    QHBoxLayout *m_setLayout;
-    QVBoxLayout *m_infoLayout;
+    QVBoxLayout *m_layout;
 
-    QGroupBox *m_infoGroupBox;
-
-    OutputBox *m_infoPathOutputBox;
-    OutputBox *m_infoTitleOutputBox;
-    OutputBox *m_infoDescOutputBox;
-    OutputBox *m_infoDurationOutputBox;
-
-    OpenFileBox *m_setFileBox;
-
-    QPushButton *m_setButton;
+    MediaSetSubpanel *m_setSubpanel;
+    MediaInfoSubpanel *m_infoSubpanel;
 
     VlcManager *m_vlcManager;
-
-private slots:
-    void setMedia();
-    void setMediaInfo(bool status);
 
 };
 
