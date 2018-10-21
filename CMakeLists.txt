@@ -26,6 +26,7 @@ set (SOURCES
     ${SOURCES_DIR}/ui/widgets/qualitycombobox.cpp
     ${SOURCES_DIR}/ui/widgets/aspectratiocombobox.cpp
     ${SOURCES_DIR}/ui/widgets/audiocodeccombobox.cpp
+    ${SOURCES_DIR}/ui/widgets/sampleratecombobox.cpp
     ${SOURCES_DIR}/soutbuilder.cpp
     ${SOURCES_DIR}/vlcmanager.cpp
     )
@@ -45,6 +46,7 @@ set (HEADERS
     ${HEADERS_DIR}/ui/widgets/qualitycombobox.hpp
     ${HEADERS_DIR}/ui/widgets/aspectratiocombobox.hpp
     ${HEADERS_DIR}/ui/widgets/audiocodeccombobox.hpp
+    ${HEADERS_DIR}/ui/widgets/sampleratecombobox.hpp
     ${HEADERS_DIR}/soutbuilder.hpp
     ${HEADERS_DIR}/vlcmanager.hpp
     )
