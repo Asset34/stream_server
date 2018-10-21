@@ -12,7 +12,7 @@ TranscodeSubpanel::TranscodeSubpanel(VlcManager *vlcManager,
       m_vlcManager(vlcManager)
 {
     // Create enable check box
-    m_enableCheckBox = new QCheckBox;
+    m_enableCheckBox = new QCheckBox("Enable");
     m_enableCheckBox->setChecked(false);
 
     // Create video subpanel
@@ -26,6 +26,9 @@ TranscodeSubpanel::TranscodeSubpanel(VlcManager *vlcManager,
     // Create layout
     m_layout = new QVBoxLayout;
     m_layout->setContentsMargins(0, 0, 0, 0);
+    m_layout->addWidget(m_enableCheckBox);
+    m_layout->addWidget(m_videoSubpanel);
+    m_layout->addWidget(m_audioSubpanel);
 
     // Create widget
     setTitle("Transcode");
