@@ -129,10 +129,7 @@ void VlcManager::createMedia(const QString &path)
     });
     connect(m_mediaPlayer, &VlcMediaPlayer::timeChanged,
             [this](int ms){
-        QTime time(0, 0, 0, 0);
-        time.addMSecs(ms);
-
-        emit mediaTimeChanged(time);
+        emit mediaTimeChanged(QTime(0, 0, 0, 0).addMSecs(ms));
     });
 }
 
