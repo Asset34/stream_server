@@ -1,7 +1,6 @@
 #include "openfilebox.hpp"
 
 #include <QHBoxLayout>
-#include <QString>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -20,23 +19,18 @@ OpenFileBox::OpenFileBox(const QString &name,
 
     /* Path text edit */
     m_pathLineEdit = new QLineEdit;
-    m_pathLineEdit->setFixedHeight(25);
 
     /* File button */
     m_fileDialogButton = new QPushButton("...");
-    m_fileDialogButton->setFixedWidth(50);
-    m_fileDialogButton->setFixedHeight(25);
 
     /* Layout */
     m_layout = new QHBoxLayout;
-    m_layout->setMargin(0);
+    m_layout->setContentsMargins(0, 0, 0, 0);
     m_layout->addWidget(m_nameLabel);
     m_layout->addWidget(m_pathLineEdit);
     m_layout->addWidget(m_fileDialogButton);
 
     /* Widget */
-    setFixedHeight(50);
-    setContentsMargins(5, 5, 5, 0);
     setLayout(m_layout);
 
     /* Connections */

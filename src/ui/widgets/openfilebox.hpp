@@ -2,9 +2,9 @@
 #define OPENFILEBOX_HPP
 
 #include <QWidget>
+#include <QString>
 
 class QHBoxLayout;
-class QString;
 class QLabel;
 class QLineEdit;
 class QPushButton;
