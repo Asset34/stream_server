@@ -48,6 +48,7 @@ private:
 
 signals:
     void mediaSetted(bool setted);
+    void mediaStartedPlay();
     void mediaStateChanged(QString state);
     void mediaTimeChanged(QTime time);
     void errorOccured(QString error);
