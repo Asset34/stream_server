@@ -48,6 +48,8 @@ void AddressSubpanel::setParameters()
 {
     SoutBuilder &builder = m_vlcManager->getSoutBuilder();
 
+    m_vlcManager->setStreamName(m_nameLineEdit->text());
+
     builder.setRtpName(m_nameLineEdit->text());
     builder.setRtpIp(m_ipInputBox->getIp());
     builder.setRtpPort(m_ipInputBox->getPort());
