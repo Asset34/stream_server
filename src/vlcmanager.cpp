@@ -6,9 +6,6 @@
 #include <VLCQtCore/MediaPlayer.h>
 #include <VLCQtCore/Error.h>
 
-#include <QDebug>
-#include <QFileInfo>
-
 VlcManager::VlcManager(QObject *parent)
     : QObject(parent),
       m_instance(nullptr),
@@ -36,12 +33,6 @@ VlcManager::~VlcManager()
 
 void VlcManager::setMedia(const QString &path)
 {
-    // Check path
-    if (!checkMediaFile(path)) {
-        emit errorOccured("Invalid file");
-        return;
-    }
-
     resetMedia(path);
     parseMedia();
 }
@@ -119,12 +110,6 @@ void VlcManager::resumeStream()
 void VlcManager::stopStream()
 {
     m_mediaPlayer->stop();
-}
-
-bool VlcManager::checkMediaFile(const QString &path) const
-{
-    return QFileInfo::exists(path) &&
-           QFileInfo(path).isFile();
 }
 
 void VlcManager::createMedia(const QString &path)

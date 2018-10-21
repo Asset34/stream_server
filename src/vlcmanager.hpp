@@ -36,8 +36,6 @@ public:
     void stopStream();
 
 private:
-    bool checkMediaFile(const QString &path) const;
-
     void createMedia(const QString &path);
     void clearMedia();
     void resetMedia(const QString &path);

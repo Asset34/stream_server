@@ -2,6 +2,8 @@
 
 #include "QHBoxLayout"
 #include <QPushButton>
+#include <QFileInfo>
+#include <QMessageBox>
 
 #include <ui/widgets/openfilebox.hpp>
 
@@ -30,7 +32,17 @@ MediaSetSubpanel::MediaSetSubpanel(VlcManager *vlcManager,
     // Create connections
     connect(m_setMediaButton, &QPushButton::clicked,
             [this](){
-        m_vlcManager->setMedia(m_mediaOpenFileBox->getPath());
+        QString path = m_mediaOpenFileBox->getPath();
+
+        if (QFileInfo::exists(path) && QFileInfo(path).isFile()) {
+            m_vlcManager->setMedia(m_mediaOpenFileBox->getPath());
+        }
+        else {
+            QMessageBox errorBox(this);
+            errorBox.setWindowTitle("Error");
+            errorBox.setText("Invalid path");
+            errorBox.exec();
+        }
     });
 }
 
