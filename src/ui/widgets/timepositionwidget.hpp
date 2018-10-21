@@ -12,7 +12,8 @@ class TimePositionWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit TimePositionWidget(QWidget *parent = nullptr);
+    explicit TimePositionWidget(const QTime &timeLimit = QTime(0, 0, 0, 0),
+                                QWidget *parent = nullptr);
     virtual ~TimePositionWidget();
 
     void setTimeLimit(const QTime &time);

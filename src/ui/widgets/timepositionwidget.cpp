@@ -3,7 +3,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 
-TimePositionWidget::TimePositionWidget(QWidget *parent)
+TimePositionWidget::TimePositionWidget(const QTime &timeLimit, QWidget *parent)
     : QWidget(parent)
 {
     // Create time position label
@@ -15,7 +15,7 @@ TimePositionWidget::TimePositionWidget(QWidget *parent)
     m_separatorLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     // Create time maximum label
-    m_timeLimitLabel = new QLabel(QTime(0, 0, 0, 0).toString());
+    m_timeLimitLabel = new QLabel(timeLimit.toString());
     m_timeLimitLabel->setAlignment(Qt::AlignCenter);
 
     // Create layout
