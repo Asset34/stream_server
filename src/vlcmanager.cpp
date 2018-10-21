@@ -118,13 +118,18 @@ bool VlcManager::checkMediaFile(const QString &path) const
 void VlcManager::createMedia(const QString &path)
 {
     m_media = new VlcMedia(path, true, m_instance);
-    connect(m_media, &VlcMedia::stateChanged, this, &VlcManager::handleStateChange);
-    connect(
-        m_media,
-        static_cast<void (VlcMedia::*)(bool)>(&VlcMedia::parsedChanged),
-        this,
-        &VlcManager::handleParseResult
-    );
+    connect(m_media, &VlcMedia::stateChanged,
+            [this](const Vlc::State &state){
+        emit mediaStateChanged(Vlc::state(state));
+    });
+    connect(m_media, static_cast<void (VlcMedia::*)(bool)>(&VlcMedia::parsedChanged),
+            [this](bool status){
+        if (!status) {
+          clearMedia();
+        }
+
+        emit mediaSetted(status);
+    });
 }
 
 void VlcManager::clearMedia()
@@ -142,18 +147,4 @@ void VlcManager::resetMedia(const QString &path)
 void VlcManager::parseMedia()
 {
     m_media->parse();
-}
-
-void VlcManager::handleParseResult(bool status)
-{
-    if (!status) {
-        clearMedia();
-    }
-
-    emit mediaSetted(status);
-}
-
-void VlcManager::handleStateChange(const Vlc::State &state)
-{
-    emit mediaStateChanged(Vlc::state(state));
 }

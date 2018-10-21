@@ -46,10 +46,6 @@ private:
 
     SoutBuilder m_soutBuilder;
 
-private slots:
-    void handleParseResult(bool status);
-    void handleStateChange(const Vlc::State &state);
-
 signals:
     void mediaSetted(bool setted);
     void mediaStateChanged(QString state);
