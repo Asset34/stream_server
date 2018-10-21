@@ -22,9 +22,6 @@ private:
 
     VlcManager m_vlcManager;
 
-private slots:
-    void handleError(QString error);
-
 };
 
 #endif // MAINWINDOW_HPP

@@ -9,36 +9,36 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    // Open media panel
+    QDockWidget *dock;
+
+    // Create media panel
     m_mediaPanel = new MediaPanel(&m_vlcManager);
-
-    // Stream destination panel
-    m_streamPanel = new StreamPanel(&m_vlcManager);
-
-    QDockWidget *dock = new QDockWidget("Media", this);
+    dock = new QDockWidget("Media", this);
+    dock->setContentsMargins(0, 0, 0, 0);
     dock->setWidget(m_mediaPanel);
     addDockWidget(Qt::TopDockWidgetArea, dock);
 
+    // Create stream panel
+    m_streamPanel = new StreamPanel(&m_vlcManager);
     dock = new QDockWidget("Stream", this);
+    dock->setContentsMargins(0, 0, 0, 0);
     dock->setWidget(m_streamPanel);
     addDockWidget(Qt::BottomDockWidgetArea, dock);
 
-    // Window
+    // Create window
     setWindowTitle("Stream server");
-    setContentsMargins(10, 10, 10, 10);
 
-    // Connections
-    connect(&m_vlcManager, &VlcManager::errorOccured, this, &MainWindow::handleError);
+    // Create connections
+    connect(&m_vlcManager, &VlcManager::errorOccured,
+            [this](QString error){
+        QMessageBox errorBox(this);
+
+        errorBox.setWindowTitle("Error");
+        errorBox.setText(error);
+        errorBox.exec();
+    });
 }
 
 MainWindow::~MainWindow()
 {
-}
-
-void MainWindow::handleError(QString error)
-{
-    QMessageBox errorBox(this);
-    errorBox.setWindowTitle("Error");
-    errorBox.setText(error);
-    errorBox.exec();
 }
