@@ -22,9 +22,9 @@ StreamInfoSubpanel::StreamInfoSubpanel(VlcManager *vlcManager,
     // Create layout
     m_layout = new QFormLayout;
     m_layout->setContentsMargins(0, 0, 0, 0);
-    m_layout->addRow("Name"  , m_nameLabel     );
-    m_layout->addRow("Status", m_stateLabel    );
-    m_layout->addRow("Time"  , m_timePostWidget);
+    m_layout->addRow("Name:"  , m_nameLabel     );
+    m_layout->addRow("Status:", m_stateLabel    );
+    m_layout->addRow("Time:"  , m_timePostWidget);
 
     // Create widget
     setTitle("Info");
