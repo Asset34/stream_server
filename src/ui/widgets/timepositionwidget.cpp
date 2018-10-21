@@ -38,7 +38,7 @@ void TimePositionWidget::setMaximum(const QTime &time)
     m_timeMaxLabel->setText(time.toString());
 }
 
-void TimePositionWidget::updateTime(const QTime &time)
+void TimePositionWidget::updateTime(QTime time)
 {
     m_timePosLabel->setText(time.toString());
 }
