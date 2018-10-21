@@ -23,6 +23,7 @@ set (SOURCES
     ${SOURCES_DIR}/ui/widgets/selectbox.cpp
     ${SOURCES_DIR}/ui/widgets/inputvaluebox.cpp
     ${SOURCES_DIR}/ui/widgets/audiocodeccombobox.cpp
+    ${SOURCES_DIR}/ui/widgets/qualitycombobox.cpp
     ${SOURCES_DIR}/soutbuilder.cpp
     ${SOURCES_DIR}/vlcmanager.cpp
     )
@@ -39,6 +40,7 @@ set (HEADERS
     ${HEADERS_DIR}/ui/widgets/selectbox.hpp
     ${HEADERS_DIR}/ui/widgets/inputvaluebox.hpp
     ${HEADERS_DIR}/ui/widgets/audiocodeccombobox.hpp
+    ${HEADERS_DIR}/ui/widgets/qualitycombobox.hpp
     ${HEADERS_DIR}/soutbuilder.hpp
     ${HEADERS_DIR}/vlcmanager.hpp
     )
