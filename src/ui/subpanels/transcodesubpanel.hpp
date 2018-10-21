@@ -6,7 +6,6 @@
 #include "vlcmanager.hpp"
 
 class QVBoxLayout;
-class QCheckBox;
 class VideoSubpanel;
 class AudioSubpanel;
 
@@ -24,8 +23,6 @@ public slots:
 
 private:
     QVBoxLayout *m_layout;
-
-    QCheckBox *m_enableCheckBox;
 
     VideoSubpanel *m_videoSubpanel;
     AudioSubpanel *m_audioSubpanel;
