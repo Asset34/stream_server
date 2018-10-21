@@ -18,7 +18,7 @@ public:
     void setMaximum(const QTime &time);
 
 public slots:
-    void updateTime(const QTime &time);
+    void updateTime(QTime time);
 
 private:
     QHBoxLayout *m_layout;
