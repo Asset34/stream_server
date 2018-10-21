@@ -19,6 +19,7 @@ set (SOURCES
     ${SOURCES_DIR}/ui/subpanels/mediainfosubpanel.cpp
     ${SOURCES_DIR}/ui/subpanels/videosubpanel.cpp
     ${SOURCES_DIR}/ui/subpanels/audiosubpanel.cpp
+    ${SOURCES_DIR}/ui/subpanels/transcodesubpanel.cpp
     ${SOURCES_DIR}/ui/widgets/openfilebox.cpp
     ${SOURCES_DIR}/ui/widgets/inputbox.cpp
     ${SOURCES_DIR}/ui/widgets/outputbox.cpp
@@ -41,6 +42,7 @@ set (HEADERS
     ${HEADERS_DIR}/ui/subpanels/mediainfosubpanel.hpp
     ${HEADERS_DIR}/ui/subpanels/videosubpanel.hpp
     ${HEADERS_DIR}/ui/subpanels/audiosubpanel.hpp
+    ${HEADERS_DIR}/ui/subpanels/transcodesubpanel.hpp
     ${HEADERS_DIR}/ui/widgets/openfilebox.hpp
     ${HEADERS_DIR}/ui/widgets/inputbox.hpp
     ${HEADERS_DIR}/ui/widgets/outputbox.hpp
