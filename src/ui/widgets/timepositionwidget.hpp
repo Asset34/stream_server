@@ -19,6 +19,7 @@ public:
 
 public slots:
     void updateTime(QTime time);
+    void reset();
 
 private:
     QHBoxLayout *m_layout;

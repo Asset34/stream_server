@@ -42,3 +42,8 @@ void TimePositionWidget::updateTime(QTime time)
 {
     m_timePosLabel->setText(time.toString());
 }
+
+void TimePositionWidget::reset()
+{
+    m_timePosLabel->setText(QTime(0, 0, 0, 0).toString());
+}
