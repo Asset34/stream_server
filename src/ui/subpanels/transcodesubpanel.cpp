@@ -17,9 +17,11 @@ TranscodeSubpanel::TranscodeSubpanel(VlcManager *vlcManager,
 
     // Create video subpanel
     m_videoSubpanel = new VideoSubpanel(vlcManager);
+    m_videoSubpanel->setEnabled(false);
 
     // Create audio subpanel
     m_audioSubpanel = new AudioSubpanel(vlcManager);
+    m_audioSubpanel->setEnabled(false);
 
     // Create layout
     m_layout = new QVBoxLayout;
