@@ -24,6 +24,7 @@ MediaPanel::MediaPanel(VlcManager *vlcManager,
 
     // Create widget
     setLayout(m_layout);
+    setContentsMargins(5, 5, 5, 5);
 }
 
 MediaPanel::~MediaPanel()
