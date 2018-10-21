@@ -13,7 +13,7 @@ TranscodeSubpanel::TranscodeSubpanel(VlcManager *vlcManager,
 {
     // Create enable check box
     m_enableCheckBox = new QCheckBox;
-    m_enableCheckBox->setEnabled(true);
+    m_enableCheckBox->setChecked(false);
 
     // Create video subpanel
     m_videoSubpanel = new VideoSubpanel(vlcManager);
