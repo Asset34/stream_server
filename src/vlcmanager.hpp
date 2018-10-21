@@ -20,6 +20,9 @@ public:
 
     void setMedia(const QString &path);
 
+    void setStreamName(const QString &name);
+    const QString &getStreamName() const;
+
     QString getMediaPath() const;
     QString getMediaTitle() const;
     QString getMediaDescription() const;
@@ -43,6 +46,8 @@ private:
     VlcInstance *m_instance;
     VlcMedia *m_media;
     VlcMediaPlayer *m_mediaPlayer;
+
+    QString m_streamName;
 
     SoutBuilder m_soutBuilder;
 

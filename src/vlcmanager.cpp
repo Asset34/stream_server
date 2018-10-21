@@ -46,6 +46,16 @@ void VlcManager::setMedia(const QString &path)
     parseMedia();
 }
 
+void VlcManager::setStreamName(const QString &name)
+{
+    m_streamName = name;
+}
+
+const QString &VlcManager::getStreamName() const
+{
+    return m_streamName;
+}
+
 QString VlcManager::getMediaPath() const
 {
     if (m_media) {
