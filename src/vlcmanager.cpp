@@ -92,6 +92,8 @@ void VlcManager::resumeStream()
 void VlcManager::stopStream()
 {
     m_mediaPlayer->stop();
+
+    emit mediaStopped();
 }
 
 VlcManager::VlcManager(QObject *parent)
