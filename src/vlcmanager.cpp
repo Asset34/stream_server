@@ -8,9 +8,7 @@
 
 VlcManager::VlcManager(QObject *parent)
     : QObject(parent),
-      m_instance(nullptr),
-      m_media(nullptr),
-      m_mediaPlayer(nullptr)
+      m_media(nullptr)
 {
     QStringList args;
     args << "--no-osd"
@@ -124,6 +122,7 @@ void VlcManager::createMedia(const QString &path)
             [this](const Vlc::State &state){
         emit mediaStateChanged(Vlc::state(state));
     });
+
     connect(m_media, static_cast<void (VlcMedia::*)(bool)>(&VlcMedia::parsedChanged),
             [this](bool status){
         if (!status) {
