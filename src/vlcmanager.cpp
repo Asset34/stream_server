@@ -76,7 +76,7 @@ void VlcManager::playStream()
     m_media->setOption(m_soutBuilder.buildSout());
     m_mediaPlayer->open(m_media);
 
-    emit mediaStartedPlay();
+    emit mediaStarted();
 }
 
 void VlcManager::pauseStream()
