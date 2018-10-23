@@ -6,10 +6,10 @@
 #include <ui/widgets/audiocodeccombobox.hpp>
 #include <ui/widgets/sampleratecombobox.hpp>
 
-AudioSubpanel::AudioSubpanel(VlcManager *vlcManager,
-                             QWidget *parent)
-    : QGroupBox(parent),
-      m_vlcManager(vlcManager)
+#include "vlcmanager.hpp"
+
+AudioSubpanel::AudioSubpanel(QWidget *parent)
+    : QGroupBox(parent)
 {
     // Create codec combo box
     m_codecComboBox = new AudioCodecComboBox;
@@ -39,7 +39,7 @@ AudioSubpanel::~AudioSubpanel()
 
 void AudioSubpanel::setParameters()
 {
-    SoutBuilder &builder = m_vlcManager->getSoutBuilder();
+    SoutBuilder &builder = VlcManager::getInstance().getSoutBuilder();
 
     builder.setTrcAudioCodec(m_codecComboBox->getCurrentCodec());
     builder.setTrcAudioSampleRate(m_sampleRateComboBox->getCurrentSampleRate());

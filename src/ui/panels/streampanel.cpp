@@ -16,19 +16,21 @@ class StreamInfoSubpanel;
 #include <ui/subpanels/addresssubpanel.hpp>
 #include <ui/subpanels/streaminfosubpanel.hpp>
 
-StreamPanel::StreamPanel(VlcManager *vlcManager,
-                         QWidget *parent)
-    : QWidget(parent),
-      m_vlcManager(vlcManager)
+#include <vlcmanager.hpp>
+
+StreamPanel::StreamPanel(QWidget *parent)
+    : QWidget(parent)
 {
+    VlcManager &manager = VlcManager::getInstance();
+
     // Create transcode subpanel
-    m_transcodeSubpanel = new TranscodeSubpanel(vlcManager);
+    m_transcodeSubpanel = new TranscodeSubpanel;
 
     // Create address subpanel
-    m_addressSubpanel = new AddressSubpanel(vlcManager);
+    m_addressSubpanel = new AddressSubpanel;
 
     // Create info subpanel
-    m_infoSubpanel = new StreamInfoSubpanel(vlcManager);
+    m_infoSubpanel = new StreamInfoSubpanel;
 
     // Create play button
     m_playButton = new QPushButton("Play");
@@ -66,31 +68,34 @@ StreamPanel::StreamPanel(VlcManager *vlcManager,
     setEnabled(false);
 
     // Create connections
-    connect(m_vlcManager, &VlcManager::mediaSetted, this, &StreamPanel::setEnabled);
+    connect(&manager, &VlcManager::mediaSetted, this, &StreamPanel::setEnabled);
     connect(m_playButton, &QPushButton::clicked,
-            [this](){
+            [this, &manager](){
         m_transcodeSubpanel->setParameters();
         m_addressSubpanel->setParameters();
-        m_vlcManager->playStream();
+
+        manager.playStream();
 
         m_playButton->setEnabled(false);
         m_pauseButton->setEnabled(true);
         m_stopButton->setEnabled(true);
     });
     connect(m_pauseButton, &QPushButton::clicked,
-            [this](bool checked){
+            [this, &manager](bool checked){
         if (checked) {
-            m_vlcManager->pauseStream();
+            manager.pauseStream();
+
             m_pauseButton->setText("Resume");
         }
         else {
-            m_vlcManager->resumeStream();
+            manager.resumeStream();
+
             m_pauseButton->setText("Pause");
         }
     });
     connect(m_stopButton, &QPushButton::clicked,
-            [this](){
-        m_vlcManager->stopStream();
+            [this, &manager](){
+        manager.stopStream();
 
         m_playButton->setEnabled(true);
         m_pauseButton->setEnabled(false);

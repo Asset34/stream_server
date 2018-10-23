@@ -3,8 +3,6 @@
 
 #include <QGroupBox>
 
-#include "vlcmanager.hpp"
-
 class QFormLayout;
 class QSpinBox;
 class AudioCodecComboBox;
@@ -15,8 +13,7 @@ class AudioSubpanel : public QGroupBox
     Q_OBJECT
 
 public:
-    explicit AudioSubpanel(VlcManager *vlcManager,
-                           QWidget *parent = nullptr);
+    explicit AudioSubpanel(QWidget *parent = nullptr);
     virtual ~AudioSubpanel();
 
 public slots:
@@ -29,8 +26,6 @@ private:
     SampleRateComboBox *m_sampleRateComboBox;
 
     QSpinBox *m_bitrateSpinBox;
-
-    VlcManager *m_vlcManager;
 
 };
 

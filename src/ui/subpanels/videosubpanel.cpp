@@ -7,10 +7,10 @@
 #include <ui/widgets/qualitycombobox.hpp>
 #include <ui/widgets/aspectratiocombobox.hpp>
 
-VideoSubpanel::VideoSubpanel(VlcManager *vlcManager,
-                             QWidget *parent)
-    : QGroupBox(parent),
-      m_vlcManager(vlcManager)
+#include "vlcmanager.hpp"
+
+VideoSubpanel::VideoSubpanel(QWidget *parent)
+    : QGroupBox(parent)
 {
     // Create codec combo box
     m_codecComboBox = new VideoCodecComboBox;
@@ -48,7 +48,7 @@ VideoSubpanel::~VideoSubpanel()
 
 void VideoSubpanel::setParameters()
 {
-    SoutBuilder &builder = m_vlcManager->getSoutBuilder();
+    SoutBuilder &builder = VlcManager::getInstance().getSoutBuilder();
 
     builder.setTrcVideoCodec(m_codecComboBox->getCurrentCodec());
     builder.setTrcVideoQuality(m_qualityBox->getCurrentQuality());

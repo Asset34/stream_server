@@ -6,32 +6,11 @@
 #include <VLCQtCore/MediaPlayer.h>
 #include <VLCQtCore/Error.h>
 
-VlcManager::VlcManager(QObject *parent)
-    : QObject(parent),
-      m_media(nullptr)
+VlcManager &VlcManager::getInstance()
 {
-    QStringList args;
-    args << "--no-osd"
-         << "--drop-late-frames"
-         << "--skip-frames"
-         << "--no-keyboard-events"
-         << "--no-mouse-events"
-         << "--no-loop";
+    static VlcManager instance;
 
-    m_instance = new VlcInstance(args);
-    m_mediaPlayer = new VlcMediaPlayer(m_instance);
-
-    connect(m_mediaPlayer, &VlcMediaPlayer::error,
-            [this](){
-        emit errorOccured(VlcError::errmsg());
-    });
-}
-
-VlcManager::~VlcManager()
-{
-    delete m_mediaPlayer;
-    delete m_media;
-    delete m_instance;
+    return instance;
 }
 
 void VlcManager::setMedia(const QString &path)
@@ -113,6 +92,34 @@ void VlcManager::resumeStream()
 void VlcManager::stopStream()
 {
     m_mediaPlayer->stop();
+}
+
+VlcManager::VlcManager(QObject *parent)
+    : QObject(parent),
+      m_media(nullptr)
+{
+    QStringList args;
+    args << "--no-osd"
+         << "--drop-late-frames"
+         << "--skip-frames"
+         << "--no-keyboard-events"
+         << "--no-mouse-events"
+         << "--no-loop";
+
+    m_instance = new VlcInstance(args);
+    m_mediaPlayer = new VlcMediaPlayer(m_instance);
+
+    connect(m_mediaPlayer, &VlcMediaPlayer::error,
+            [this](){
+        emit errorOccured(VlcError::errmsg());
+    });
+}
+
+VlcManager::~VlcManager()
+{
+    delete m_mediaPlayer;
+    delete m_media;
+    delete m_instance;
 }
 
 void VlcManager::createMedia(const QString &path)

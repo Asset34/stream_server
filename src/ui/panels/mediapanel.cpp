@@ -5,17 +5,19 @@
 #include <ui/subpanels/mediasetsubpanel.hpp>
 #include <ui/subpanels/mediainfosubpanel.hpp>
 
-MediaPanel::MediaPanel(VlcManager *vlcManager,
-                       QWidget *parent)
-    : QWidget(parent),
-      m_vlcManager(vlcManager)
+#include <vlcmanager.hpp>
+
+MediaPanel::MediaPanel(QWidget *parent)
+    : QWidget(parent)
 {
+    VlcManager &manager = VlcManager::getInstance();
+
     // Create set subpanel
-    m_setSubpanel = new MediaSetSubpanel(vlcManager);
+    m_setSubpanel = new MediaSetSubpanel;
     m_setSubpanel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 
     // Create info subpanel
-    m_infoSubpanel = new MediaInfoSubpanel(vlcManager);
+    m_infoSubpanel = new MediaInfoSubpanel;
 
     // Create layout
     m_layout = new QVBoxLayout;

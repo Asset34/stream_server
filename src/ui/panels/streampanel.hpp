@@ -3,8 +3,6 @@
 
 #include <QWidget>
 
-#include <vlcmanager.hpp>
-
 class QVBoxLayout;
 class QHBoxLayout;
 class QPushButton;
@@ -15,8 +13,7 @@ class StreamInfoSubpanel;
 class StreamPanel : public QWidget
 {
 public:
-    StreamPanel(VlcManager *vlcManager,
-                   QWidget *parent = nullptr);
+    StreamPanel(QWidget *parent = nullptr);
     virtual ~StreamPanel();
 
 private:
@@ -30,8 +27,6 @@ private:
     QPushButton *m_playButton;
     QPushButton *m_pauseButton;
     QPushButton *m_stopButton;
-
-    VlcManager *m_vlcManager;
 
 };
 

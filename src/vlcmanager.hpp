@@ -14,9 +14,11 @@ class VlcManager : public QObject
 {
     Q_OBJECT
 
-public:
-    explicit VlcManager(QObject *parent = nullptr);
-    virtual ~VlcManager();
+public:    
+    VlcManager(const VlcManager &other) = delete;
+    void operator=(const VlcManager &other) = delete;
+
+    static VlcManager &getInstance();
 
     void setMedia(const QString &path);
 
@@ -36,6 +38,9 @@ public:
     void stopStream();
 
 private:
+    explicit VlcManager(QObject *parent = nullptr);
+    virtual ~VlcManager();
+
     void createMedia(const QString &path);
     void clearMedia();
     void resetMedia(const QString &path);

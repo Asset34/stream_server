@@ -5,17 +5,17 @@
 #include <ui/subpanels/videosubpanel.hpp>
 #include <ui/subpanels/audiosubpanel.hpp>
 
-TranscodeSubpanel::TranscodeSubpanel(VlcManager *vlcManager,
-                                     QWidget *parent)
-    : QGroupBox(parent),
-      m_vlcManager(vlcManager)
+#include "vlcmanager.hpp"
+
+TranscodeSubpanel::TranscodeSubpanel(QWidget *parent)
+    : QGroupBox(parent)
 {
     // Create video subpanel
-    m_videoSubpanel = new VideoSubpanel(vlcManager);
+    m_videoSubpanel = new VideoSubpanel;
     m_videoSubpanel->setEnabled(false);
 
     // Create audio subpanel
-    m_audioSubpanel = new AudioSubpanel(vlcManager);
+    m_audioSubpanel = new AudioSubpanel;
     m_audioSubpanel->setEnabled(false);
 
     // Create layout
@@ -42,7 +42,7 @@ TranscodeSubpanel::~TranscodeSubpanel()
 
 void TranscodeSubpanel::setParameters()
 {
-    SoutBuilder &builder = m_vlcManager->getSoutBuilder();
+    SoutBuilder &builder = VlcManager::getInstance().getSoutBuilder();
 
     builder.setTranscodeEnabled(isChecked());
 

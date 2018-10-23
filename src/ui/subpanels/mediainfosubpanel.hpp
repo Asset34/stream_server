@@ -3,8 +3,6 @@
 
 #include <QGroupBox>
 
-#include "vlcmanager.hpp"
-
 class QFormLayout;
 class QLabel;
 
@@ -13,8 +11,7 @@ class MediaInfoSubpanel : public QGroupBox
     Q_OBJECT
 
 public:
-    explicit MediaInfoSubpanel(VlcManager *vlcManager,
-                               QWidget *parent = nullptr);
+    explicit MediaInfoSubpanel(QWidget *parent = nullptr);
     virtual ~MediaInfoSubpanel();
 
 private:
@@ -23,8 +20,6 @@ private:
     QLabel *m_titleLabel;
     QLabel *m_durationLabel;
     QLabel *m_descriptionLabel;
-
-    VlcManager *m_vlcManager;
 
 };
 

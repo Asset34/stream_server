@@ -3,8 +3,6 @@
 
 #include <QGroupBox>
 
-#include "vlcmanager.hpp"
-
 class QHBoxLayout;
 class QPushButton;
 class OpenFileBox;
@@ -14,16 +12,13 @@ class MediaSetSubpanel : public QGroupBox
     Q_OBJECT
 
 public:
-    explicit MediaSetSubpanel(VlcManager *vlcManager,
-                              QWidget *parent = nullptr);
+    explicit MediaSetSubpanel(QWidget *parent = nullptr);
     virtual ~MediaSetSubpanel();
 
 private:
     QHBoxLayout *m_layout;
     OpenFileBox *m_mediaOpenFileBox;
     QPushButton *m_setMediaButton;
-
-    VlcManager *m_vlcManager;
 
 };
 

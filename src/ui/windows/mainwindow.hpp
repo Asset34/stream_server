@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 
-#include <vlcmanager.hpp>
-
 class MediaPanel;
 class StreamPanel;
 
@@ -19,8 +17,6 @@ public:
 private:
     MediaPanel *m_mediaPanel;
     StreamPanel *m_streamPanel;
-
-    VlcManager m_vlcManager;
 
 };
 

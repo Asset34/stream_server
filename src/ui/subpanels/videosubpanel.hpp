@@ -3,8 +3,6 @@
 
 #include <QGroupBox>
 
-#include "vlcmanager.hpp"
-
 class QFormLayout;
 class QSpinBox;
 class VideoCodecComboBox;
@@ -16,8 +14,7 @@ class VideoSubpanel : public QGroupBox
     Q_OBJECT
 
 public:
-    explicit VideoSubpanel(VlcManager *vlcManager,
-                           QWidget *parent = nullptr);
+    explicit VideoSubpanel(QWidget *parent = nullptr);
     virtual ~VideoSubpanel();
 
 public slots:
@@ -32,8 +29,6 @@ private:
 
     QSpinBox *m_bitrateSpinBox;
     QSpinBox *m_frameRateSpinBox;
-
-    VlcManager *m_vlcManager;
 
 };
 

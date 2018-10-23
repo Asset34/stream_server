@@ -3,11 +3,13 @@
 #include <QFormLayout>
 #include <QLabel>
 
-MediaInfoSubpanel::MediaInfoSubpanel(VlcManager *vlcManager,
-                                     QWidget *parent)
-    : QGroupBox(parent),
-      m_vlcManager(vlcManager)
+#include "vlcmanager.hpp"
+
+MediaInfoSubpanel::MediaInfoSubpanel(QWidget *parent)
+    : QGroupBox(parent)
 {
+    VlcManager &manager = VlcManager::getInstance();
+
     // Create path label
     m_pathLabel = new QLabel;
 
@@ -34,12 +36,12 @@ MediaInfoSubpanel::MediaInfoSubpanel(VlcManager *vlcManager,
     setContentsMargins(5, 20, 5, 5);
 
     // Create connections
-    connect(m_vlcManager, &VlcManager::mediaSetted,
-            [this](){
-        m_pathLabel->setText(m_vlcManager->getMediaPath());
-        m_titleLabel->setText(m_vlcManager->getMediaTitle());
-        m_durationLabel->setText(m_vlcManager->getMediaDuration().toString());
-        m_descriptionLabel->setText(m_vlcManager->getMediaDescription());
+    connect(&manager, &VlcManager::mediaSetted,
+            [this, &manager](){
+        m_pathLabel->setText(manager.getMediaPath());
+        m_titleLabel->setText(manager.getMediaTitle());
+        m_durationLabel->setText(manager.getMediaDuration().toString());
+        m_descriptionLabel->setText(manager.getMediaDescription());
     });
 }
 

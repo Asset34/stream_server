@@ -3,8 +3,6 @@
 
 #include <QGroupBox>
 
-#include "vlcmanager.hpp"
-
 class QFormLayout;
 class QVBoxLayout;
 class QLineEdit;
@@ -16,8 +14,7 @@ class AddressSubpanel : public QGroupBox
     Q_OBJECT
 
 public:
-    explicit AddressSubpanel(VlcManager *vlcManager,
-                             QWidget *parent = nullptr);
+    explicit AddressSubpanel(QWidget *parent = nullptr);
     virtual ~AddressSubpanel();
 
 public slots:
@@ -32,8 +29,6 @@ private:
     IpInputBox *m_ipInputBox;
 
     QCheckBox *m_sapCheckBox;
-
-    VlcManager *m_vlcManager;
 
 };
 

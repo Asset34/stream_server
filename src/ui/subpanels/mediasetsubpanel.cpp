@@ -7,11 +7,13 @@
 
 #include <ui/widgets/openfilebox.hpp>
 
-MediaSetSubpanel::MediaSetSubpanel(VlcManager *vlcManager,
-                                   QWidget *parent)
-    : QGroupBox(parent),
-      m_vlcManager(vlcManager)
+#include "vlcmanager.hpp"
+
+MediaSetSubpanel::MediaSetSubpanel(QWidget *parent)
+    : QGroupBox(parent)
 {
+    VlcManager &manager = VlcManager::getInstance();
+
     // Create media open file box
     m_mediaOpenFileBox = new OpenFileBox("Path");
 
@@ -31,11 +33,11 @@ MediaSetSubpanel::MediaSetSubpanel(VlcManager *vlcManager,
 
     // Create connections
     connect(m_setMediaButton, &QPushButton::clicked,
-            [this](){
+            [this, &manager](){
         QString path = m_mediaOpenFileBox->getPath();
 
         if (QFileInfo::exists(path) && QFileInfo(path).isFile()) {
-            m_vlcManager->setMedia(m_mediaOpenFileBox->getPath());
+            manager.setMedia(m_mediaOpenFileBox->getPath());
         }
         else {
             QMessageBox errorBox(this);

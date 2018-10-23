@@ -5,11 +5,13 @@
 
 #include <ui/widgets/timepositionwidget.hpp>
 
-StreamInfoSubpanel::StreamInfoSubpanel(VlcManager *vlcManager,
-                                       QWidget *parent)
-    : QGroupBox(parent),
-      m_vlcManager(vlcManager)
+#include "vlcmanager.hpp"
+
+StreamInfoSubpanel::StreamInfoSubpanel(QWidget *parent)
+    : QGroupBox(parent)
 {
+    VlcManager &manager = VlcManager::getInstance();
+
     // Create name label
     m_nameLabel = new QLabel;
 
@@ -32,14 +34,14 @@ StreamInfoSubpanel::StreamInfoSubpanel(VlcManager *vlcManager,
     setLayout(m_layout);
 
     // Create connections
-    connect(m_vlcManager, &VlcManager::mediaTimeChanged,
+    connect(&manager, &VlcManager::mediaTimeChanged,
             m_timePostWidget, &TimePositionWidget::updateTime);
-    connect(m_vlcManager, &VlcManager::mediaStartedPlay,
-            [this](){
-        m_nameLabel->setText(m_vlcManager->getStreamName());
-        m_timePostWidget->setTimeLimit(m_vlcManager->getMediaDuration());
+    connect(&manager, &VlcManager::mediaStartedPlay,
+            [this, &manager](){
+        m_nameLabel->setText(manager.getStreamName());
+        m_timePostWidget->setTimeLimit(manager.getMediaDuration());
     });
-    connect(m_vlcManager, &VlcManager::mediaStateChanged,
+    connect(&manager, &VlcManager::mediaStateChanged,
             [this](QString state) {
         m_stateLabel->setText(state);
     });

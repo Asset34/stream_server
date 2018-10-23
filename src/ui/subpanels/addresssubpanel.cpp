@@ -7,10 +7,10 @@
 
 #include <ui/widgets/ipinputbox.hpp>
 
-AddressSubpanel::AddressSubpanel(VlcManager *vlcManager,
-                                 QWidget *parent)
-    : QGroupBox(parent),
-      m_vlcManager(vlcManager)
+#include <vlcmanager.hpp>
+
+AddressSubpanel::AddressSubpanel(QWidget *parent)
+    : QGroupBox(parent)
 {
     // Create name line edit
     m_nameLineEdit = new QLineEdit;
@@ -46,9 +46,10 @@ AddressSubpanel::~AddressSubpanel()
 
 void AddressSubpanel::setParameters()
 {
-    SoutBuilder &builder = m_vlcManager->getSoutBuilder();
+    VlcManager &manager = VlcManager::getInstance();
+    SoutBuilder &builder = manager.getSoutBuilder();
 
-    m_vlcManager->setStreamName(m_nameLineEdit->text());
+    manager.setStreamName(m_nameLineEdit->text());
 
     builder.setRtpName(m_nameLineEdit->text());
     builder.setRtpIp(m_ipInputBox->getIp());
