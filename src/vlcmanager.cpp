@@ -108,12 +108,18 @@ VlcManager::VlcManager(QObject *parent)
          << "--no-mouse-events"
          << "--no-loop";
 
+    // Create vlc objects
     m_instance = new VlcInstance(args);
     m_mediaPlayer = new VlcMediaPlayer(m_instance);
 
+    // Create connections
     connect(m_mediaPlayer, &VlcMediaPlayer::error,
             [this](){
         emit errorOccured(VlcError::errmsg());
+    });
+    connect(m_mediaPlayer, &VlcMediaPlayer::timeChanged,
+            [this](int ms){
+        emit mediaTimeChanged(QTime(0, 0, 0, 0).addMSecs(ms));
     });
 }
 
@@ -139,10 +145,6 @@ void VlcManager::createMedia(const QString &path)
         }
 
         emit mediaSetted(status);
-    });
-    connect(m_mediaPlayer, &VlcMediaPlayer::timeChanged,
-            [this](int ms){
-        emit mediaTimeChanged(QTime(0, 0, 0, 0).addMSecs(ms));
     });
 }
 
