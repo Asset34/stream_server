@@ -36,7 +36,7 @@ StreamInfoSubpanel::StreamInfoSubpanel(QWidget *parent)
     // Create connections
     connect(&manager, &VlcManager::mediaTimeChanged,
             m_timePostWidget, &TimePositionWidget::updateTime);
-    connect(&manager, &VlcManager::mediaStartedPlay,
+    connect(&manager, &VlcManager::mediaStarted,
             [this, &manager](){
         m_nameLabel->setText(manager.getStreamName());
         m_timePostWidget->setTimeLimit(manager.getMediaDuration());
