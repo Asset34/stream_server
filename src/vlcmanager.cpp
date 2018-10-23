@@ -150,7 +150,10 @@ void VlcManager::createMedia(const QString &path)
 
 void VlcManager::clearMedia()
 {
-    m_media->deleteLater();
+    if (m_media) {
+        m_media->deleteLater();
+    }
+
     m_media = nullptr;
 }
 
