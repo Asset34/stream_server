@@ -46,4 +46,12 @@ MediaSetSubpanel::MediaSetSubpanel(QWidget *parent)
             errorBox.exec();
         }
     });
+    connect(&manager, &VlcManager::mediaStarted,
+            [this](){
+        setEnabled(false);
+    });
+    connect(&manager, &VlcManager::mediaStopped,
+            [this](){
+        setEnabled(true);
+    });
 }
