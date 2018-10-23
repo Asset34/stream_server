@@ -15,7 +15,6 @@ class VideoSubpanel : public QGroupBox
 
 public:
     explicit VideoSubpanel(QWidget *parent = nullptr);
-    virtual ~VideoSubpanel();
 
 public slots:
     void setParameters();

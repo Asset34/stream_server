@@ -11,7 +11,6 @@ class AspectRatioComboBox : public QComboBox
 
 public:
     explicit AspectRatioComboBox(QWidget *parent = nullptr);
-    virtual ~AspectRatioComboBox();
 
     Vlc::Ratio getCurrentAspectRatio() const;
 

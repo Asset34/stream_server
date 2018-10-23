@@ -10,10 +10,6 @@ VideoCodecComboBox::VideoCodecComboBox(QWidget *parent)
     addItem("JPEG"  , Vlc::JPEG      );
 }
 
-VideoCodecComboBox::~VideoCodecComboBox()
-{
-}
-
 Vlc::VideoCodec VideoCodecComboBox::getCurrentCodec() const
 {
     static_cast<Vlc::AudioCodec>(currentData().toInt());

@@ -14,10 +14,6 @@ AspectRatioComboBox::AspectRatioComboBox(QWidget *parent)
     addItem("2.39:1", Vlc::R_239_100);
 }
 
-AspectRatioComboBox::~AspectRatioComboBox()
-{
-}
-
 Vlc::Ratio AspectRatioComboBox::getCurrentAspectRatio() const
 {
     return static_cast<Vlc::Ratio>(currentData().toInt());

@@ -42,10 +42,6 @@ VideoSubpanel::VideoSubpanel(QWidget *parent)
     setLayout(m_layout);
 }
 
-VideoSubpanel::~VideoSubpanel()
-{
-}
-
 void VideoSubpanel::setParameters()
 {
     SoutBuilder &builder = VlcManager::getInstance().getSoutBuilder();

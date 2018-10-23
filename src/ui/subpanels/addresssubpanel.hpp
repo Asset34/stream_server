@@ -15,7 +15,6 @@ class AddressSubpanel : public QGroupBox
 
 public:
     explicit AddressSubpanel(QWidget *parent = nullptr);
-    virtual ~AddressSubpanel();
 
 public slots:
     void setParameters();

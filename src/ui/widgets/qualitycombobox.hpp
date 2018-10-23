@@ -9,7 +9,6 @@ class QualityComboBox : public QComboBox
 
 public:
     explicit QualityComboBox(QWidget *parent = nullptr);
-    virtual ~QualityComboBox();
 
     int getCurrentQuality() const;
 

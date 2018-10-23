@@ -46,7 +46,3 @@ StreamInfoSubpanel::StreamInfoSubpanel(QWidget *parent)
         m_stateLabel->setText(state);
     });
 }
-
-StreamInfoSubpanel::~StreamInfoSubpanel()
-{
-}

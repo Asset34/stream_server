@@ -13,7 +13,6 @@ class MediaPanel : public QWidget
 
 public:
     explicit MediaPanel(QWidget *parent = nullptr);
-    virtual ~MediaPanel();
 
 private:
     QVBoxLayout *m_layout;

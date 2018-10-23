@@ -11,10 +11,6 @@ SampleRateComboBox::SampleRateComboBox(QWidget *parent)
     addItem("48 kHz"   , 48000);
 }
 
-SampleRateComboBox::~SampleRateComboBox()
-{
-}
-
 int SampleRateComboBox::getCurrentSampleRate() const
 {
     return currentData().toInt();

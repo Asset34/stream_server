@@ -13,7 +13,6 @@ class StreamInfoSubpanel : public QGroupBox
 
 public:
     explicit StreamInfoSubpanel(QWidget *parent = nullptr);
-    virtual ~StreamInfoSubpanel();
 
 private:
     QFormLayout *m_layout;

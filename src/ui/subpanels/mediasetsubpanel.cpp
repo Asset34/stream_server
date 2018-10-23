@@ -47,7 +47,3 @@ MediaSetSubpanel::MediaSetSubpanel(QWidget *parent)
         }
     });
 }
-
-MediaSetSubpanel::~MediaSetSubpanel()
-{
-}

@@ -9,10 +9,6 @@ AudioCodecComboBox::AudioCodecComboBox(QWidget *parent)
     addItem("A52"   , Vlc::A52       );
 }
 
-AudioCodecComboBox::~AudioCodecComboBox()
-{
-}
-
 Vlc::AudioCodec AudioCodecComboBox::getCurrentCodec() const
 {
     return static_cast<Vlc::AudioCodec>(currentData().toInt());

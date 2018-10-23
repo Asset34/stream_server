@@ -13,7 +13,6 @@ class TranscodeSubpanel : public QGroupBox
 
 public:
     explicit TranscodeSubpanel(QWidget *parent = nullptr);
-    virtual ~TranscodeSubpanel();
 
 public slots:
     void setParameters();

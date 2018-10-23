@@ -40,10 +40,6 @@ AddressSubpanel::AddressSubpanel(QWidget *parent)
     setLayout(m_mainLayout);
 }
 
-AddressSubpanel::~AddressSubpanel()
-{
-}
-
 void AddressSubpanel::setParameters()
 {
     VlcManager &manager = VlcManager::getInstance();

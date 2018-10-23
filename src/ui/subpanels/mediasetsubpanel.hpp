@@ -13,7 +13,6 @@ class MediaSetSubpanel : public QGroupBox
 
 public:
     explicit MediaSetSubpanel(QWidget *parent = nullptr);
-    virtual ~MediaSetSubpanel();
 
 private:
     QHBoxLayout *m_layout;

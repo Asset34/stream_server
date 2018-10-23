@@ -36,10 +36,6 @@ TranscodeSubpanel::TranscodeSubpanel(QWidget *parent)
     connect(this, &TranscodeSubpanel::clicked,  m_audioSubpanel, &VideoSubpanel::setEnabled);
 }
 
-TranscodeSubpanel::~TranscodeSubpanel()
-{
-}
-
 void TranscodeSubpanel::setParameters()
 {
     SoutBuilder &builder = VlcManager::getInstance().getSoutBuilder();

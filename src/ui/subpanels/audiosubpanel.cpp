@@ -33,10 +33,6 @@ AudioSubpanel::AudioSubpanel(QWidget *parent)
     setLayout(m_layout);
 }
 
-AudioSubpanel::~AudioSubpanel()
-{
-}
-
 void AudioSubpanel::setParameters()
 {
     SoutBuilder &builder = VlcManager::getInstance().getSoutBuilder();

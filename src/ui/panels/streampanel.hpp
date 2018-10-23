@@ -14,7 +14,6 @@ class StreamPanel : public QWidget
 {
 public:
     StreamPanel(QWidget *parent = nullptr);
-    virtual ~StreamPanel();
 
 private:
     QHBoxLayout *m_mainLayout;

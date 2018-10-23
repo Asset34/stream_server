@@ -11,7 +11,6 @@ class AudioCodecComboBox : public QComboBox
 
 public:
     explicit AudioCodecComboBox(QWidget *parent = nullptr);
-    virtual ~AudioCodecComboBox();
 
     Vlc::AudioCodec getCurrentCodec() const;
 

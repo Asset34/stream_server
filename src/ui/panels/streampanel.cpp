@@ -94,7 +94,3 @@ StreamPanel::StreamPanel(QWidget *parent)
         m_stopButton->setEnabled(false);
     });
 }
-
-StreamPanel::~StreamPanel()
-{
-}

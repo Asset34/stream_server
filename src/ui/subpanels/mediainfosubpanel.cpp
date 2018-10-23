@@ -44,7 +44,3 @@ MediaInfoSubpanel::MediaInfoSubpanel(QWidget *parent)
         m_descriptionLabel->setText(manager.getMediaDescription());
     });
 }
-
-MediaInfoSubpanel::~MediaInfoSubpanel()
-{
-}

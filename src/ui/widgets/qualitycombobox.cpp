@@ -10,10 +10,6 @@ QualityComboBox::QualityComboBox(QWidget *parent)
     addItem("1080", 1080);
 }
 
-QualityComboBox::~QualityComboBox()
-{
-}
-
 int QualityComboBox::getCurrentQuality() const
 {
     return currentData().toInt();

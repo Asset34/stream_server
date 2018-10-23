@@ -14,7 +14,6 @@ class AudioSubpanel : public QGroupBox
 
 public:
     explicit AudioSubpanel(QWidget *parent = nullptr);
-    virtual ~AudioSubpanel();
 
 public slots:
     void setParameters();

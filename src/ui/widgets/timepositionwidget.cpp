@@ -29,10 +29,6 @@ TimePositionWidget::TimePositionWidget(const QTime &timeLimit, QWidget *parent)
     setLayout(m_layout);
 }
 
-TimePositionWidget::~TimePositionWidget()
-{
-}
-
 void TimePositionWidget::setTimeLimit(const QTime &time)
 {
     m_timeLimitLabel->setText(time.toString());

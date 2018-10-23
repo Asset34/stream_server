@@ -8,7 +8,6 @@ class SampleRateComboBox : public QComboBox
 
 public:
     explicit SampleRateComboBox(QWidget *parent = nullptr);
-    virtual ~SampleRateComboBox();
 
     int getCurrentSampleRate() const;
 

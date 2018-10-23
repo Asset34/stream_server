@@ -12,7 +12,6 @@ class MediaInfoSubpanel : public QGroupBox
 
 public:
     explicit MediaInfoSubpanel(QWidget *parent = nullptr);
-    virtual ~MediaInfoSubpanel();
 
 private:
     QFormLayout *m_layout;

@@ -11,7 +11,6 @@ class VideoCodecComboBox : public QComboBox
 
 public:
     explicit VideoCodecComboBox(QWidget *parent = nullptr);
-    virtual ~VideoCodecComboBox();
 
     Vlc::VideoCodec getCurrentCodec() const;
 
