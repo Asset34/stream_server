@@ -1,13 +1,5 @@
 #include "streampanel.hpp"
 
-class QVBoxLayout;
-class QHBoxLayout;
-class QToggleButton;
-class QPushButton;
-class TranscodeSubpanel;
-class AddressSubpanel;
-class StreamInfoSubpanel;
-
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
