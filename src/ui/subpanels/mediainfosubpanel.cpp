@@ -12,6 +12,8 @@ MediaInfoSubpanel::MediaInfoSubpanel(QWidget *parent)
 
     // Create path label
     m_pathLabel = new QLabel;
+    m_pathLabel->setWordWrap(true);
+    m_pathLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
 
     // Create title label
     m_titleLabel = new QLabel;
@@ -24,6 +26,7 @@ MediaInfoSubpanel::MediaInfoSubpanel(QWidget *parent)
 
     // Create layout
     m_layout = new QFormLayout;
+    m_layout->setSizeConstraint(QLayout::SetMinAndMaxSize);
     m_layout->setContentsMargins(0, 0, 0, 0);
     m_layout->addRow("Path:", m_pathLabel);
     m_layout->addRow("Title:", m_titleLabel);
