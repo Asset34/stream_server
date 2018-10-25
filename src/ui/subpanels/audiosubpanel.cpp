@@ -19,6 +19,7 @@ AudioSubpanel::AudioSubpanel(QWidget *parent)
 
     // Create bitrate spin box
     m_bitrateSpinBox = new QSpinBox;
+    m_bitrateSpinBox->setRange(0, 1000000);
 
     // Create layout
     m_layout = new QFormLayout;

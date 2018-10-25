@@ -23,9 +23,11 @@ VideoSubpanel::VideoSubpanel(QWidget *parent)
 
     // Create bitrate spin box
     m_bitrateSpinBox = new QSpinBox;
+    m_bitrateSpinBox->setRange(0, 1000000);
 
     // Create frame rate spin box
     m_frameRateSpinBox = new QSpinBox;
+    m_frameRateSpinBox->setRange(0, 999);
 
     // Create layout
     m_layout = new QFormLayout;
