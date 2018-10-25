@@ -12,5 +12,5 @@ VideoCodecComboBox::VideoCodecComboBox(QWidget *parent)
 
 Vlc::VideoCodec VideoCodecComboBox::getCurrentCodec() const
 {
-    static_cast<Vlc::AudioCodec>(currentData().toInt());
+    return static_cast<Vlc::VideoCodec>(currentData().toInt());
 }
