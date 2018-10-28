@@ -34,9 +34,8 @@ QString VlcManager::getMediaPath() const
     if (m_media) {
         return m_media->currentLocation();
     }
-    else {
-        return QString();
-    }
+
+    return QString();
 }
 
 QString VlcManager::getMediaTitle() const
@@ -45,9 +44,8 @@ QString VlcManager::getMediaTitle() const
         VlcMetaManager metaManager(m_media);
         return metaManager.title();
     }
-    else {
-        return QString();
-    }
+
+    return QString();
 }
 
 QString VlcManager::getMediaDescription() const
@@ -56,9 +54,8 @@ QString VlcManager::getMediaDescription() const
         VlcMetaManager metaManager(m_media);
         return metaManager.description();
     }
-    else {
-        return QString();
-    }
+
+    return QString();
 }
 
 QTime VlcManager::getMediaDuration() const
