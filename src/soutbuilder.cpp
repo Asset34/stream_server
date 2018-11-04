@@ -8,7 +8,8 @@ SoutBuilder::SoutBuilder()
         "%1"      ","
         "dst=%2"  ","
         "port=%3" ","
-        "name=%4"
+        "name=%4" ","
+        "ttl=255"
     "}";
     m_transcodeTemplate = "transcode{"
         "aenc=ffmpeg{strict=-2}" ","
